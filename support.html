@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Pane</title>
+<meta name="description" content="How to set up your Mac for Pane, connect over Tailscale, and fix common errors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="brand" href="./"><i aria-hidden="true"></i>Pane</a>
+    <nav><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+  </header>
+
+  <main class="doc">
+    <h1>Support</h1>
+    <p class="meta">Pane: Remote Desktop for Mac · <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></p>
+
+    <h2>1. Turn on Screen Sharing on your Mac</h2>
+    <p>Pane talks to the Screen Sharing service built into macOS, so there is nothing to install on the Mac.</p>
+    <ol>
+      <li>Open <strong>System Settings</strong> › <strong>General</strong> › <strong>Sharing</strong>.</li>
+      <li>Turn on <strong>Screen Sharing</strong>. (If <strong>Remote Management</strong> is on, turn it off first; the two cannot run together.)</li>
+      <li>Click the <strong>ⓘ</strong> next to Screen Sharing and choose who may connect: <em>All users</em> or <em>Only these users</em>.</li>
+      <li>Optional: under <strong>Computer Settings</strong>, enable <em>VNC viewers may control screen with password</em> only if you want to sign in with a separate VNC password instead of your Mac account. Pane works with both.</li>
+      <li>Note the Mac’s name shown under <strong>General</strong> › <strong>About</strong> (for example <code>Studio</code>). On your local network it is reachable as <code>studio.local</code>.</li>
+    </ol>
+    <p>In Pane, tap <strong>Add Mac</strong>. Macs with Screen Sharing on usually appear by name within a few seconds; otherwise type the <code>.local</code> name or IP address. When asked, sign in with your <strong>Mac user name and password</strong> (the same ones you use at the login screen).</p>
+
+    <h3>Let the Mac wake up</h3>
+    <p>So that Pane can wake a sleeping Mac, enable <strong>Wake for network access</strong> in System Settings › <strong>Battery</strong> › <strong>Options</strong> (laptops) or <strong>Energy</strong> (desktops). Keep the Mac on Ethernet or the same Wi-Fi network; waking works on the local network only.</p>
+
+    <h2>2. Connect from anywhere with Tailscale</h2>
+    <p>Tailscale gives each of your devices a private, stable address that works from any network, with no port forwarding.</p>
+    <ol>
+      <li>Install Tailscale on the Mac (<a href="https://tailscale.com/download/mac">tailscale.com/download</a>) and on your iPhone or iPad (App Store), and sign in to the same account on both.</li>
+      <li>In the Tailscale admin console, make sure <strong>MagicDNS</strong> is on. Your Mac is then reachable by its machine name, for example <code>studio</code>, or by its <code>100.x.y.z</code> address.</li>
+      <li>In Pane, add a Mac and enter that name or address. Port stays <code>5900</code>.</li>
+      <li>Make sure the Tailscale app is connected on your iPhone or iPad before you connect. Tailscale on the Mac must be running too; set it to start at login.</li>
+    </ol>
+    <p class="note">Tailscale encrypts the whole connection end to end, so this is also the recommended way to use Pane on public Wi-Fi.</p>
+
+    <h2>3. Common errors</h2>
+    <table>
+      <tr><th>What you see</th><th>What it usually means</th></tr>
+      <tr><td><strong>Connection refused</strong></td><td>Screen Sharing is off on the Mac, or the Mac’s firewall blocks it. Check System Settings › General › Sharing, then System Settings › Network › Firewall.</td></tr>
+      <tr><td><strong>Timed out</strong> / <strong>Host not found</strong></td><td>The Mac is asleep, on a different network, or the name does not resolve. Try the IP address, check that both devices are on the same Wi-Fi, or connect Tailscale on both.</td></tr>
+      <tr><td><strong>Authentication failed</strong></td><td>Use your Mac user name (short name or full name) and login password. If you enabled a VNC password on the Mac, leave the user name empty and enter that password instead.</td></tr>
+      <tr><td><strong>Nothing shows up when adding a Mac</strong></td><td>Pane needs the <strong>Local Network</strong> permission to discover Macs. Allow it in Settings › Privacy &amp; Security › Local Network › Pane, then pull to refresh.</td></tr>
+      <tr><td><strong>Black screen</strong> or <strong>only the login window</strong></td><td>The Mac is locked or another user is logged in. Sign in on the remote login window; macOS may ask whether to share the current display or open a virtual display.</td></tr>
+      <tr><td><strong>Wake does nothing</strong></td><td>Wake for network access is off, the Mac is on a different network, or it is fully shut down (wake only works from sleep).</td></tr>
+      <tr><td><strong>Keyboard shortcuts go to the iPad</strong></td><td>Some system shortcuts (⌘H, ⌘Tab, ⌘Space) are reserved by iPadOS. Use the on-screen modifier bar in Pane to send them to the Mac.</td></tr>
+      <tr><td><strong>Choppy or slow</strong></td><td>Move closer to the Wi-Fi router, prefer 5 GHz, or lower the quality setting in the session panel. Over Tailscale, a direct connection is much faster than a relayed one; check <code>tailscale status</code> on the Mac.</td></tr>
+    </table>
+
+    <h2>4. Still stuck?</h2>
+    <p>Email <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a> with your iPhone or iPad model, iOS version, macOS version and the exact error text. We read everything and usually answer within a few days.</p>
+  </main>
+
+  <footer>
+    <a href="./">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy policy</a>
+    <p>© 2026 Understudios</p>
+  </footer>
+</div>
+</body>
+</html>
