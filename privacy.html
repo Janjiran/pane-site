@@ -38,9 +38,11 @@
 
     <h2>Direct connections, no relay</h2>
     <p>Pane connects directly from your device to your Mac using VNC (the protocol behind macOS Screen Sharing), over your local network, a VPN such as Tailscale, or any address you provide. There is no Understudios relay, proxy or cloud service in between. Your session traffic is exchanged only between your device and your Mac.</p>
+    <p><strong>What is encrypted on the wire.</strong> Pane talks VNC directly to your Mac. Your login is encrypted; the screen, keystrokes and clipboard are not, so use it on your own Wi-Fi or over Tailscale or a VPN when away.</p>
 
-    <h2>Analytics</h2>
+    <h2 id="analytics">Analytics</h2>
     <p>To understand which features are used and where connections fail, Pane sends anonymous usage events to <a href="https://posthog.com">PostHog</a>, hosted on servers in the European Union (Frankfurt, Germany). Analytics is off entirely in development builds.</p>
+    <p>You can turn usage analytics off in the app under <strong>About</strong> (Home › sliders button). Events already sent are not affected; nothing is sent after the switch is off.</p>
     <p>The events Pane sends:</p>
     <ul>
       <li>App opened</li>

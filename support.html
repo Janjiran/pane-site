@@ -67,6 +67,12 @@
     <h3 id="local-network">Local Network permission</h3>
     <p>The first time Pane scans for Macs or connects on your Wi-Fi, iOS asks to allow <strong>Local Network</strong> access (“Pane looks for computers with Screen Sharing on your network and connects to them.”). If you tapped <strong>Don’t Allow</strong>, <strong>Macs on this network</strong> stays empty and <code>.local</code> names and local IP addresses fail with <strong>Can’t reach</strong>. Turn it on in <strong>Settings › Apps › Pane › Local Network</strong> (or Settings › Privacy &amp; Security › Local Network), then tap <strong>Scan again</strong>. Connections over Tailscale do not use the local network and are not affected.</p>
 
+    <h3 id="encryption">Is the connection encrypted?</h3>
+    <p>Pane talks VNC directly to your Mac. Your login is encrypted; the screen, keystrokes and clipboard are not, so use it on your own Wi-Fi or over Tailscale or a VPN when away. Section 2 above explains how to set Tailscale up; it encrypts the whole connection end to end.</p>
+
+    <h3 id="analytics">Can I turn off analytics?</h3>
+    <p>Yes. You can turn usage analytics off in the app under <strong>About</strong> (Home › sliders button). Events already sent are not affected; nothing is sent after the switch is off. What is collected is listed in the <a href="privacy.html#analytics">privacy policy</a>.</p>
+
     <h2>5. Still stuck?</h2>
     <p>Email <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a> with your iPhone or iPad model, iOS version, macOS version and the exact error text. We read everything and usually answer within a few days.</p>
   </main>
