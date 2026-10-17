@@ -18,9 +18,9 @@
 
   <main class="doc">
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective October 16, 2026 · Pane: Remote Desktop for Mac</p>
+    <p class="meta">Effective October 17, 2026 · Pane: Remote Desktop for Mac</p>
 
-    <p class="note">The short version: Pane has no account and no server of its own. Your hosts, settings and passwords stay on your device. The app connects directly to your computers. The only data that leaves your device is anonymous usage analytics, and you can see exactly what that includes below.</p>
+    <p class="note">The short version: Pane has no account and no server of its own. Your Macs, settings and passwords stay on your device. The app connects directly to your computers. The only data that leaves your device is anonymous usage analytics, and you can see exactly what that includes below.</p>
 
     <h2>Who we are</h2>
     <p>Pane is made by Understudios (Jan Jiráň), Czech Republic. If you have any question about this policy, write to <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a>.</p>
@@ -30,41 +30,53 @@
 
     <h2>What stays on your device</h2>
     <ul>
-      <li><strong>Saved hosts and settings.</strong> The names, addresses, ports and preferences of the computers you add are stored only on your iPhone or iPad.</li>
-      <li><strong>Usernames and passwords.</strong> Credentials for your computers are stored only in the device Keychain, protected by Face ID, Touch ID or your passcode. They never leave the device and are never included in analytics.</li>
-      <li><strong>Screen content.</strong> What you see on the remote screen is never stored, with one exception: Pane can keep an optional last-frame thumbnail of a host so you recognise it on the home screen. That thumbnail is kept on the device only and is deleted when you remove the host.</li>
+      <li><strong>Saved Macs and settings.</strong> The names, addresses, ports, Tailscale addresses, MAC addresses for Wake-on-LAN and per-Mac settings (Quality, Displays, Shared clipboard, Lock Mac on disconnect) are stored only on your iPhone or iPad.</li>
+      <li><strong>Usernames and passwords.</strong> When <em>Save to Keychain</em> is on, the login for a Mac is stored only in the device Keychain. The password is additionally protected by <strong>Face ID or Touch ID</strong>: Pane can read it only after you authenticate, there is no passcode fallback, and if your Face ID or Touch ID enrolment changes, iOS invalidates the saved password and Pane asks you to sign in again. With <em>Save to Keychain</em> off, the login is kept in memory for that one connection and discarded afterwards. Credentials never leave the device and are never included in analytics.</li>
+      <li><strong>Screen content.</strong> What you see on the remote screen is never stored, with one exception: Pane keeps a last-frame thumbnail of each Mac so you recognise it on the home screen. That thumbnail is kept on the device only, excluded from iCloud backup, and deleted when you forget the Mac. A screenshot you take from the iPad session panel is handed to the iOS share sheet and goes only where you send it.</li>
+      <li><strong>Clipboard.</strong> With <em>Shared clipboard</em> on, text you copy on the iPhone or iPad is sent to the Mac you are connected to, and text copied on the Mac is placed on your device’s clipboard. It travels only inside that VNC session and never to us.</li>
     </ul>
 
     <h2>Direct connections, no relay</h2>
-    <p>Pane connects directly from your device to your computer using VNC (the protocol behind macOS Screen Sharing), over your local network, a VPN such as Tailscale, or any address you provide. There is no Understudios relay, proxy or cloud service in between. Your session traffic is exchanged only between your device and your computer.</p>
+    <p>Pane connects directly from your device to your Mac using VNC (the protocol behind macOS Screen Sharing), over your local network, a VPN such as Tailscale, or any address you provide. There is no Understudios relay, proxy or cloud service in between. Your session traffic is exchanged only between your device and your Mac.</p>
 
     <h2>Analytics</h2>
-    <p>To understand which features are used and where connections fail, Pane sends anonymous usage events to PostHog, hosted on servers in the European Union (Frankfurt, Germany).</p>
-    <p>What we collect:</p>
+    <p>To understand which features are used and where connections fail, Pane sends anonymous usage events to <a href="https://posthog.com">PostHog</a>, hosted on servers in the European Union (Frankfurt, Germany). Analytics is off entirely in development builds.</p>
+    <p>The events Pane sends:</p>
     <ul>
       <li>App opened</li>
-      <li>Connection attempted, succeeded or failed (with a generic error category)</li>
-      <li>Feature used (for example keyboard shown, display switched, trackpad mode)</li>
-      <li>Session length, in coarse buckets</li>
-      <li>Device model, OS version and app version</li>
+      <li>Mac added or forgotten (how it was added: nearby, typed in, link)</li>
+      <li>Connection attempted, succeeded or failed (network type <em>LAN / remote</em>, authentication type, a generic error category, latency and time-to-first-frame in coarse buckets, encoding, number of displays)</li>
+      <li>Session ended (length in coarse buckets, Trackpad or Touch mode)</li>
+      <li>Feature used (for example a modifier key, display switched, Quality changed, Shared clipboard, Wake-on-LAN, hardware keyboard)</li>
+    </ul>
+    <p>Every event also carries these properties, added automatically by the PostHog SDK (<code>posthog-react-native</code>):</p>
+    <ul>
+      <li>App name, bundle identifier, version and build number</li>
+      <li>OS name and version (for example iOS 26.0), device manufacturer and model (for example iPhone 17 Pro), device type (<em>Mobile</em>), whether it runs in a simulator</li>
+      <li>Language and region (locale) and time zone</li>
+      <li>Screen width and height in points</li>
+      <li>SDK name and version, a timestamp, a random session identifier (a new one after 30 minutes of inactivity) and a random installation identifier</li>
     </ul>
     <p>What we never collect:</p>
     <ul>
-      <li>Hostnames or IP addresses of your computers</li>
+      <li>Hostnames, IP addresses, Tailscale addresses or MAC addresses of your computers</li>
       <li>Usernames or passwords</li>
       <li>Screen content, keystrokes or clipboard content</li>
+      <li>The link that opened the app. The SDK’s automatic lifecycle events (“Application Opened” and the like) are turned off, because they would include the launch URL, and a <code>vnc://</code> link can contain a hostname, user name or password. Pane sends a bare “app opened” event instead.</li>
+      <li>Your location. Location is never requested for analytics, and PostHog’s GeoIP lookup is disabled for every event.</li>
     </ul>
-    <p>Your device’s IP address is discarded at ingestion and is not stored with events. Events are identified by a random identifier that is not linked to you. We do not use advertising identifiers, we show no advertising, and we never sell data. Analytics data is retained for 12 months and then deleted.</p>
+    <p>There is no session replay, no screen recording, no autocapture of taps or screens, and no crash reporting. Your device’s IP address is discarded at ingestion (PostHog’s <em>anonymize IPs</em> project setting is on) and is not stored with events. Events are identified only by a random installation identifier that is not linked to you, has no person profile behind it, and is reset when you delete and reinstall the app. When it starts, the app also fetches its remote configuration (feature flags) from PostHog; that request carries the same random identifier and nothing else. We do not use advertising identifiers, we show no advertising, and we never sell data. Analytics data is retained for 12 months and then deleted.</p>
 
     <h2>Permissions Pane asks for</h2>
     <table>
       <tr><th>Permission</th><th>Why</th></tr>
-      <tr><td>Local Network</td><td>Required to connect to computers on your Wi-Fi and to discover them. Without it, Pane can only reach computers over a VPN or the internet.</td></tr>
-      <tr><td>Bonjour</td><td>Used to find Macs that advertise Screen Sharing on the local network so you can add them by name.</td></tr>
-      <tr><td>Location (while using)</td><td>iOS requires location access to reveal the name of the Wi-Fi network you are on. Pane uses it only to display that name next to your hosts. Your location is never stored and never sent anywhere.</td></tr>
-      <tr><td>Face ID / Touch ID</td><td>Unlocks the credentials stored in the Keychain. Biometric data never leaves the Secure Enclave and is not available to Pane.</td></tr>
+      <tr><td>Local Network</td><td>Required to connect to Macs on your Wi-Fi and to discover them. Without it, Pane can only reach Macs over Tailscale or another VPN.</td></tr>
+      <tr><td>Bonjour</td><td>Used to find Macs that advertise Screen Sharing (<code>_rfb._tcp</code>) on the local network so you can add them by name.</td></tr>
+      <tr><td>Location (while using)</td><td>iOS requires location access to reveal the name of the Wi-Fi network you are on. Pane uses it only to show that name above <em>Macs on this network</em>. Your location is never stored and never sent anywhere.</td></tr>
+      <tr><td>Face ID / Touch ID</td><td>Unlocks the password stored in the Keychain. Biometric data never leaves the Secure Enclave and is not available to Pane.</td></tr>
+      <tr><td>Paste from Other Apps</td><td>iOS asks before an app reads text you copied elsewhere. Pane reads the clipboard only while <em>Shared clipboard</em> is on in a session, or when you tap the paste button on the New connection screen. The text goes to your Mac, never to us.</td></tr>
     </table>
-    <p>You can change any of these at any time in Settings › Privacy &amp; Security.</p>
+    <p>You can change any of these at any time in Settings › Apps › Pane, or under Settings › Privacy &amp; Security.</p>
 
     <h2>Children</h2>
     <p>Pane is not directed at children under 13, and we do not knowingly collect any data from them.</p>

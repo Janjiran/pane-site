@@ -24,22 +24,22 @@
     <p>Pane talks to the Screen Sharing service built into macOS, so there is nothing to install on the Mac.</p>
     <ol>
       <li>Open <strong>System Settings</strong> › <strong>General</strong> › <strong>Sharing</strong>.</li>
-      <li>Turn on <strong>Screen Sharing</strong>. (If <strong>Remote Management</strong> is on, turn it off first; the two cannot run together.)</li>
+      <li>Turn on <strong>Screen Sharing</strong>. (If <strong>Remote Management</strong> is already on, Screen Sharing is included in it; Pane works with both.)</li>
       <li>Click the <strong>ⓘ</strong> next to Screen Sharing and choose who may connect: <em>All users</em> or <em>Only these users</em>.</li>
-      <li>Optional: under <strong>Computer Settings</strong>, enable <em>VNC viewers may control screen with password</em> only if you want to sign in with a separate VNC password instead of your Mac account. Pane works with both.</li>
+      <li>Optional: under <strong>Computer Settings</strong>, enable <em>VNC viewers may control screen with password</em> only if you want to sign in with a separate VNC password instead of your Mac account. Pane detects which one the Mac asks for.</li>
       <li>Note the Mac’s name shown under <strong>General</strong> › <strong>About</strong> (for example <code>Studio</code>). On your local network it is reachable as <code>studio.local</code>.</li>
     </ol>
-    <p>In Pane, tap <strong>Add Mac</strong>. Macs with Screen Sharing on usually appear by name within a few seconds; otherwise type the <code>.local</code> name or IP address. When asked, sign in with your <strong>Mac user name and password</strong> (the same ones you use at the login screen).</p>
+    <p>In Pane, tap <strong>Connect to a Mac</strong> at the bottom of the home screen (on iPad: <strong>New connection</strong> in the top bar). Macs with Screen Sharing on appear under <strong>Macs on this network</strong> within a few seconds; tap one, or type the <code>.local</code> name or IP address into <strong>Address</strong>. Port 5900 and your Mac account are assumed; <strong>Advanced</strong> holds <strong>Port</strong>, <strong>Quality</strong> (Auto · Sharp · Fast) and <strong>Displays</strong> (All · Main). Tap <strong>Connect</strong>, then sign in with your <strong>Mac user name</strong> and <strong>Password</strong> (the same ones you use at the login screen). Leave <strong>Save to Keychain</strong> on and Face ID unlocks it next time.</p>
 
     <h3>Let the Mac wake up</h3>
-    <p>So that Pane can wake a sleeping Mac, enable <strong>Wake for network access</strong> in System Settings › <strong>Battery</strong> › <strong>Options</strong> (laptops) or <strong>Energy</strong> (desktops). Keep the Mac on Ethernet or the same Wi-Fi network; waking works on the local network only.</p>
+    <p>So that Pane can wake a sleeping Mac, enable <strong>Wake for network access</strong> in System Settings › <strong>Battery</strong> › <strong>Options</strong> (laptops) or <strong>Energy</strong> (desktops), and keep the Mac on Ethernet or the same Wi-Fi network. Then, in Pane, open the Mac’s details, tap <strong>Edit</strong> and enter its hardware address under <strong>Wake-on-LAN</strong> (on the Mac: System Settings › Network › Wi-Fi or Ethernet › <strong>Details</strong> › <strong>Hardware</strong>). An asleep Mac then shows a <strong>Wake</strong> button on the home screen, and the connecting screen offers <strong>Wake &amp; retry</strong>. Waking works on the local network only.</p>
 
     <h2>2. Connect from anywhere with Tailscale</h2>
     <p>Tailscale gives each of your devices a private, stable address that works from any network, with no port forwarding.</p>
     <ol>
       <li>Install Tailscale on the Mac (<a href="https://tailscale.com/download/mac">tailscale.com/download</a>) and on your iPhone or iPad (App Store), and sign in to the same account on both.</li>
-      <li>In the Tailscale admin console, make sure <strong>MagicDNS</strong> is on. Your Mac is then reachable by its machine name, for example <code>studio</code>, or by its <code>100.x.y.z</code> address.</li>
-      <li>In Pane, add a Mac and enter that name or address. Port stays <code>5900</code>.</li>
+      <li>In the Tailscale admin console, make sure <strong>MagicDNS</strong> is on. Your Mac is then reachable by its machine name, for example <code>studio</code> or <code>studio.tail1234.ts.net</code>, or by its <code>100.x.y.z</code> address.</li>
+      <li>In Pane, open the Mac’s details, tap <strong>Edit</strong> and enter that name or address under <strong>Away from home</strong>. When the Mac does not answer on its home address, the connecting screen offers <strong>Try Tailscale</strong>. (You can also add a new Mac with the Tailscale address directly; the port stays <code>5900</code>.)</li>
       <li>Make sure the Tailscale app is connected on your iPhone or iPad before you connect. Tailscale on the Mac must be running too; set it to start at login.</li>
     </ol>
     <p class="note">Tailscale encrypts the whole connection end to end, so this is also the recommended way to use Pane on public Wi-Fi.</p>
@@ -47,17 +47,27 @@
     <h2>3. Common errors</h2>
     <table>
       <tr><th>What you see</th><th>What it usually means</th></tr>
-      <tr><td><strong>Connection refused</strong></td><td>Screen Sharing is off on the Mac, or the Mac’s firewall blocks it. Check System Settings › General › Sharing, then System Settings › Network › Firewall.</td></tr>
-      <tr><td><strong>Timed out</strong> / <strong>Host not found</strong></td><td>The Mac is asleep, on a different network, or the name does not resolve. Try the IP address, check that both devices are on the same Wi-Fi, or connect Tailscale on both.</td></tr>
-      <tr><td><strong>Authentication failed</strong></td><td>Use your Mac user name (short name or full name) and login password. If you enabled a VNC password on the Mac, leave the user name empty and enter that password instead.</td></tr>
-      <tr><td><strong>Nothing shows up when adding a Mac</strong></td><td>Pane needs the <strong>Local Network</strong> permission to discover Macs. Allow it in Settings › Privacy &amp; Security › Local Network › Pane, then pull to refresh.</td></tr>
+      <tr><td><strong>Can’t reach</strong> · <em>didn’t answer on port 5900. It may be asleep, or you’re on a different network.</em></td><td>Screen Sharing is off, the Mac is asleep, on a different network, the name does not resolve, or the Mac’s firewall blocks it. Check System Settings › General › Sharing and System Settings › Network › Firewall, make sure both devices are on the same Wi-Fi, or use <strong>Wake &amp; retry</strong>, <strong>Try Tailscale</strong> or <strong>Edit address</strong>.</td></tr>
+      <tr><td><strong>Sign in needed</strong> · <em>That didn’t work. Check the user name and password.</em></td><td>Use your Mac user name (short name or full name) and login password. If the Mac asks for a VNC password instead, Pane shows a single <strong>VNC password</strong> field and no user name.</td></tr>
+      <tr><td><em>The connection timed out before the screen arrived.</em></td><td>The network is very slow or something in between drops the connection. Try again closer to the router, or over Tailscale check that it is a direct connection (<code>tailscale status</code> on the Mac).</td></tr>
+      <tr><td><em>The server closed the connection.</em> / <strong>Disconnected</strong> · <em>closed by server</em></td><td>The Mac went to sleep, Screen Sharing was turned off, or another user took over the screen. Tap <strong>Reconnect</strong>.</td></tr>
+      <tr><td><em>The server spoke a VNC dialect Pane doesn’t understand yet.</em></td><td>Usually a non-Mac VNC server with an unsupported security type. Email us the server software and version.</td></tr>
+      <tr><td><strong>Macs on this network</strong> stays empty</td><td>Pane needs the <strong>Local Network</strong> permission to discover Macs; see <a href="#local-network">Troubleshooting</a>. Then tap <strong>Scan again</strong>.</td></tr>
       <tr><td><strong>Black screen</strong> or <strong>only the login window</strong></td><td>The Mac is locked or another user is logged in. Sign in on the remote login window; macOS may ask whether to share the current display or open a virtual display.</td></tr>
-      <tr><td><strong>Wake does nothing</strong></td><td>Wake for network access is off, the Mac is on a different network, or it is fully shut down (wake only works from sleep).</td></tr>
-      <tr><td><strong>Keyboard shortcuts go to the iPad</strong></td><td>Some system shortcuts (⌘H, ⌘Tab, ⌘Space) are reserved by iPadOS. Use the on-screen modifier bar in Pane to send them to the Mac.</td></tr>
-      <tr><td><strong>Choppy or slow</strong></td><td>Move closer to the Wi-Fi router, prefer 5 GHz, or lower the quality setting in the session panel. Over Tailscale, a direct connection is much faster than a relayed one; check <code>tailscale status</code> on the Mac.</td></tr>
+      <tr><td><strong>Wake</strong> does nothing</td><td>No hardware address under <strong>Wake-on-LAN</strong>, Wake for network access is off, the Mac is on a different network, or it is fully shut down (wake only works from sleep).</td></tr>
+      <tr><td><strong>Keyboard shortcuts go to the iPad</strong></td><td>⌘ ⌥ ⌃ ⇧ and esc live in the dock at the bottom of the session: tap a modifier once to hold it for the next key, twice (or long-press) to keep it held. With a hardware keyboard attached, the keyboard button at the right of the dock switches whether keys go to the Mac or stay on this device. A few shortcuts (⌘H, ⌘Tab, ⌘Space) are reserved by iPadOS; send them from the dock instead.</td></tr>
+      <tr><td><strong>Choppy or slow</strong></td><td>Move closer to the Wi-Fi router, prefer 5 GHz, or set <strong>Quality</strong> to <strong>Fast</strong>: under <strong>Settings for this Mac</strong> in the Mac’s details, in <strong>Advanced</strong> when adding it, or in the session panel on iPad. Over Tailscale, a direct connection is much faster than a relayed one.</td></tr>
+      <tr><td><strong>Clipboard does not sync</strong></td><td>Turn on <strong>Shared clipboard</strong> under <strong>Settings for this Mac</strong> (or in the iPad session panel), and allow the paste prompt; see <a href="#paste-prompt">Troubleshooting</a>.</td></tr>
     </table>
 
-    <h2>4. Still stuck?</h2>
+    <h2>4. Troubleshooting</h2>
+    <h3 id="paste-prompt">“Pane would like to paste from…”</h3>
+    <p>With <strong>Shared clipboard</strong> on (the default), Pane mirrors what you copy on the iPhone or iPad to the Mac, and iOS asks before any app reads text you copied in another app. Tap <strong>Allow Paste</strong>. To stop the prompt for good, open <strong>Settings › Apps › Pane › Paste from Other Apps</strong> and choose <strong>Allow</strong> (on iOS 17 and earlier: Settings › Pane). The same prompt appears when you tap the paste button on the <strong>New connection</strong> screen. If you would rather not share the clipboard, turn it off under <strong>Settings for this Mac</strong>.</p>
+
+    <h3 id="local-network">Local Network permission</h3>
+    <p>The first time Pane scans for Macs or connects on your Wi-Fi, iOS asks to allow <strong>Local Network</strong> access (“Pane looks for computers with Screen Sharing on your network and connects to them.”). If you tapped <strong>Don’t Allow</strong>, <strong>Macs on this network</strong> stays empty and <code>.local</code> names and local IP addresses fail with <strong>Can’t reach</strong>. Turn it on in <strong>Settings › Apps › Pane › Local Network</strong> (or Settings › Privacy &amp; Security › Local Network), then tap <strong>Scan again</strong>. Connections over Tailscale do not use the local network and are not affected.</p>
+
+    <h2>5. Still stuck?</h2>
     <p>Email <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a> with your iPhone or iPad model, iOS version, macOS version and the exact error text. We read everything and usually answer within a few days.</p>
   </main>
 
