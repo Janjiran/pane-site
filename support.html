@@ -31,10 +31,10 @@
     </ol>
     <p>In Pane, tap <strong>Connect to a Mac</strong> at the bottom of the home screen (on iPad: <strong>New connection</strong> in the top bar). Macs with Screen Sharing on appear under <strong>Macs on this network</strong> within a few seconds; tap one, or type the <code>.local</code> name or IP address into <strong>Address</strong>. Port 5900 and your Mac account are assumed; <strong>Advanced</strong> holds <strong>Port</strong>, <strong>Quality</strong> (Auto · Sharp · Fast) and <strong>Displays</strong> (All · Main). Tap <strong>Connect</strong>, then sign in with your <strong>Mac user name</strong> and <strong>Password</strong> (the same ones you use at the login screen). Leave <strong>Save to Keychain</strong> on and Face ID unlocks it next time.</p>
 
-    <h3>Let the Mac wake up</h3>
+    <h3 id="wake-on-lan">Let the Mac wake up</h3>
     <p>So that Pane can wake a sleeping Mac, enable <strong>Wake for network access</strong> in System Settings › <strong>Battery</strong> › <strong>Options</strong> (laptops) or <strong>Energy</strong> (desktops), and keep the Mac on Ethernet or the same Wi-Fi network. Then, in Pane, open the Mac’s details, tap <strong>Edit</strong> and enter its hardware address under <strong>Wake-on-LAN</strong> (on the Mac: System Settings › Network › Wi-Fi or Ethernet › <strong>Details</strong> › <strong>Hardware</strong>). An asleep Mac then shows a <strong>Wake</strong> button on the home screen, and the connecting screen offers <strong>Wake &amp; retry</strong>. Waking works on the local network only.</p>
 
-    <h2>2. Connect from anywhere with Tailscale</h2>
+    <h2 id="tailscale">2. Connect from anywhere with Tailscale</h2>
     <p>Tailscale gives each of your devices a private, stable address that works from any network, with no port forwarding.</p>
     <ol>
       <li>Install Tailscale on the Mac (<a href="https://tailscale.com/download/mac">tailscale.com/download</a>) and on your iPhone or iPad (App Store), and sign in to the same account on both.</li>
