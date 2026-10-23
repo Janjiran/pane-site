@@ -39,7 +39,7 @@
     <ol>
       <li>Install Tailscale on the Mac (<a href="https://tailscale.com/download/mac">tailscale.com/download</a>) and on your iPhone or iPad (App Store), and sign in to the same account on both.</li>
       <li>In the Tailscale admin console, make sure <strong>MagicDNS</strong> is on. Your Mac is then reachable by its machine name, for example <code>studio</code> or <code>studio.tail1234.ts.net</code>, or by its <code>100.x.y.z</code> address.</li>
-      <li>In Pane, open the Mac’s details, tap <strong>Edit</strong> and enter that name or address under <strong>Away from home</strong>. When the Mac does not answer on its home address, the connecting screen offers <strong>Try Tailscale</strong>. (You can also add a new Mac with the Tailscale address directly; the port stays <code>5900</code>.)</li>
+      <li>In Pane, open the Mac’s details, tap <strong>Edit</strong> and enter that name or address under <strong>Away from home</strong>. When the Mac does not answer on its home address, the connecting screen offers <strong>Try remote address</strong>. (You can also add a new Mac with the Tailscale address directly; the port stays <code>5900</code>.)</li>
       <li>Make sure the Tailscale app is connected on your iPhone or iPad before you connect. Tailscale on the Mac must be running too; set it to start at login.</li>
     </ol>
     <p class="note">Tailscale encrypts the whole connection end to end, so this is also the recommended way to use Pane on public Wi-Fi.</p>
@@ -47,7 +47,7 @@
     <h2>3. Common errors</h2>
     <table>
       <tr><th>What you see</th><th>What it usually means</th></tr>
-      <tr><td><strong>Can’t reach</strong> · <em>didn’t answer on port 5900. It may be asleep, or you’re on a different network.</em></td><td>Screen Sharing is off, the Mac is asleep, on a different network, the name does not resolve, or the Mac’s firewall blocks it. Check System Settings › General › Sharing and System Settings › Network › Firewall, make sure both devices are on the same Wi-Fi, or use <strong>Wake &amp; retry</strong>, <strong>Try Tailscale</strong> or <strong>Edit address</strong>.</td></tr>
+      <tr><td><strong>Can’t reach</strong> · <em>didn’t answer on port 5900. It may be asleep, or you’re on a different network.</em></td><td>Screen Sharing is off, the Mac is asleep, on a different network, the name does not resolve, or the Mac’s firewall blocks it. Check System Settings › General › Sharing and System Settings › Network › Firewall, make sure both devices are on the same Wi-Fi, or use <strong>Wake &amp; retry</strong>, <strong>Try remote address</strong> or <strong>Edit address</strong>.</td></tr>
       <tr><td><strong>Sign in needed</strong> · <em>That didn’t work. Check the user name and password.</em></td><td>Use your Mac user name (short name or full name) and login password. If the Mac asks for a VNC password instead, Pane shows a single <strong>VNC password</strong> field and no user name.</td></tr>
       <tr><td><em>The connection timed out before the screen arrived.</em></td><td>The network is very slow or something in between drops the connection. Try again closer to the router, or over Tailscale check that it is a direct connection (<code>tailscale status</code> on the Mac).</td></tr>
       <tr><td><em>The server closed the connection.</em> / <strong>Disconnected</strong> · <em>closed by server</em></td><td>The Mac went to sleep, Screen Sharing was turned off, or another user took over the screen. Tap <strong>Reconnect</strong>.</td></tr>
