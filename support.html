@@ -50,7 +50,7 @@
       <tr><td><strong>Can’t reach</strong> · <em>didn’t answer on port 5900. It may be asleep, or you’re on a different network.</em></td><td>Screen Sharing is off, the Mac is asleep, on a different network, the name does not resolve, or the Mac’s firewall blocks it. Check System Settings › General › Sharing and System Settings › Network › Firewall, make sure both devices are on the same Wi-Fi, or use <strong>Wake &amp; retry</strong>, <strong>Try remote address</strong> or <strong>Edit address</strong>.</td></tr>
       <tr><td><strong>Sign in needed</strong> · <em>That didn’t work. Check the user name and password.</em></td><td>Use your Mac user name (short name or full name) and login password. If the Mac asks for a VNC password instead, Pane shows a single <strong>VNC password</strong> field and no user name.</td></tr>
       <tr><td><em>The connection timed out before the screen arrived.</em></td><td>The network is very slow or something in between drops the connection. Try again closer to the router, or over Tailscale check that it is a direct connection (<code>tailscale status</code> on the Mac).</td></tr>
-      <tr><td><em>The server closed the connection.</em> / <strong>Disconnected</strong> · <em>closed by server</em></td><td>The Mac went to sleep, Screen Sharing was turned off, or another user took over the screen. Tap <strong>Reconnect</strong>.</td></tr>
+      <tr><td><em>The server closed the connection.</em> / <strong>Host closed</strong> in the session banner</td><td>The Mac went to sleep, Screen Sharing was turned off, or another user took over the screen. Tap <strong>Reconnect</strong>.</td></tr>
       <tr><td><em>The server spoke a VNC dialect Pane doesn’t understand yet.</em></td><td>Usually a non-Mac VNC server with an unsupported security type. Email us the server software and version.</td></tr>
       <tr><td><strong>Macs on this network</strong> stays empty</td><td>Pane needs the <strong>Local Network</strong> permission to discover Macs; see <a href="#local-network">Troubleshooting</a>. Then tap <strong>Scan again</strong>.</td></tr>
       <tr><td><strong>Black screen</strong> or <strong>only the login window</strong></td><td>The Mac is locked or another user is logged in. Sign in on the remote login window; macOS may ask whether to share the current display or open a virtual display.</td></tr>
@@ -60,7 +60,22 @@
       <tr><td><strong>Clipboard does not sync</strong></td><td>Turn on <strong>Shared clipboard</strong> under <strong>Settings for this Mac</strong> (or in the iPad session panel), and allow the paste prompt; see <a href="#paste-prompt">Troubleshooting</a>.</td></tr>
     </table>
 
-    <h2>4. Troubleshooting</h2>
+    <h2 id="gestures">4. Gestures in a session</h2>
+    <p>The dock’s trackpad button switches between <strong>Trackpad</strong> (the screen is a trackpad for the Mac’s pointer, the default) and <strong>Touch</strong> (your finger is the pointer). The controls fade after a few seconds; bring them back without clicking anything with a <strong>three-finger tap</strong>, or by tapping the black area around the Mac’s screen.</p>
+    <table>
+      <tr><th>Gesture</th><th>Trackpad</th><th>Touch</th></tr>
+      <tr><td>One finger</td><td>moves the pointer</td><td>drags (mouse button held)</td></tr>
+      <tr><td>Tap</td><td>click at the pointer</td><td>click where you tap</td></tr>
+      <tr><td>Two-finger tap</td><td>right click</td><td>right click</td></tr>
+      <tr><td>Long press</td><td>press-and-hold drag</td><td>right click</td></tr>
+      <tr><td>Two fingers</td><td>scroll; moves the picture while zoomed in</td><td>moves the picture</td></tr>
+      <tr><td>Three fingers</td><td>moves the picture</td><td>moves the picture</td></tr>
+      <tr><td>Pinch</td><td colspan="2">zoom; keep the fingers down and move them to pan at the same time</td></tr>
+      <tr><td>Two-finger double tap</td><td colspan="2">zoom back to fit</td></tr>
+      <tr><td>Three-finger tap</td><td colspan="2">shows the controls, nothing is sent to the Mac</td></tr>
+    </table>
+
+    <h2>5. Troubleshooting</h2>
     <h3 id="paste-prompt">“Pane would like to paste from…”</h3>
     <p>With <strong>Shared clipboard</strong> on (the default), Pane mirrors what you copy on the iPhone or iPad to the Mac, and iOS asks before any app reads text you copied in another app. Tap <strong>Allow Paste</strong>. To stop the prompt for good, open <strong>Settings › Apps › Pane › Paste from Other Apps</strong> and choose <strong>Allow</strong> (on iOS 17 and earlier: Settings › Pane). The same prompt appears when you tap the paste button on the <strong>New connection</strong> screen. If you would rather not share the clipboard, turn it off under <strong>Settings for this Mac</strong>.</p>
 
@@ -73,7 +88,7 @@
     <h3 id="analytics">Can I turn off analytics?</h3>
     <p>Yes. You can turn usage analytics off in the app under <strong>About</strong> (Home › sliders button). Events already sent are not affected; nothing is sent after the switch is off. What is collected is listed in the <a href="privacy.html#analytics">privacy policy</a>.</p>
 
-    <h2>5. Still stuck?</h2>
+    <h2>6. Still stuck?</h2>
     <p>Email <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a> with your iPhone or iPad model, iOS version, macOS version and the exact error text. We read everything and usually answer within a few days.</p>
   </main>
 
