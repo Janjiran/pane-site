@@ -6,7 +6,7 @@ a{color:inherit}
 .wrap{max-width:760px;margin:0 auto;padding:0 20px}
 .site{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
 .brand{display:inline-flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-0.02em;text-decoration:none}
-.brand i{width:16px;height:16px;border-radius:5px;background:var(--ember);box-shadow:0 6px 14px -6px rgba(200,70,130,0.55)}
+.brand i{width:18px;height:18px;border-radius:5px;background:url(favicon.png) center/cover;box-shadow:0 6px 14px -6px rgba(0,0,0,.6)}
 nav a{margin-left:18px;font-size:15px;color:var(--ink2);text-decoration:none}
 nav a:hover{color:var(--ink)}
 .pill{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 14px 0 12px;border-radius:17px;background:var(--card);font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:13px;color:#3F4048;box-shadow:0 20px 40px -24px rgba(24,26,40,0.4)}
