@@ -71,6 +71,7 @@ footer a:hover{color:var(--ink)}
 .menubar .batt::before{content:"";position:absolute;inset:2px 4px 2px 2px;border-radius:1px;background:#1D1D1F}
 .menubar .batt::after{content:"";position:absolute;right:-3px;top:3px;width:2px;height:5px;border-radius:0 1px 1px 0;background:rgba(0,0,0,.45)}
 .mark{width:14px;height:14px;border-radius:4px;background:var(--ember)}
+.menubar .antenna{width:15px;height:15px;fill:#1D1D1F}
 .menubar .active{display:inline-flex;align-items:center;justify-content:center;width:24px;height:20px;border-radius:5px;background:rgba(0,0,0,.1)}
 .pop{position:relative;margin-top:8px;padding:12px;border-radius:12px;background:#FDFDFD;box-shadow:0 30px 60px -20px rgba(24,26,40,.45),0 0 0 .5px rgba(0,0,0,.14),0 1px 2px rgba(0,0,0,.06)}
 .pop::before{content:"";position:absolute;top:-6px;right:144px;width:12px;height:12px;background:inherit;transform:rotate(45deg);border-radius:2px;box-shadow:-.5px -.5px 0 rgba(0,0,0,.14)}
