@@ -207,8 +207,6 @@
     <p>© 2026 Understudios. Mac, macOS, iPhone, iPad, Face ID and Touch ID are trademarks of Apple Inc.</p>
   </div>
 </footer>
-<script>
-(()=>{const els=document.querySelectorAll('.rv');if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;document.documentElement.classList.add('js');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});els.forEach(e=>io.observe(e))})();
-</script>
+<script>(()=>{const h=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;h.classList.add('js');requestAnimationFrame(()=>requestAnimationFrame(()=>h.classList.add('loaded')));const els=[...document.querySelectorAll('.rv')];const show=e=>e.classList.add('in');if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){show(e.target);io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});els.forEach(e=>io.observe(e))}else els.forEach(show);setTimeout(()=>els.forEach(show),1500);document.addEventListener('visibilitychange',()=>{if(!document.hidden){h.classList.add('loaded');els.forEach(show)}})})();</script>
 </body>
 </html>
