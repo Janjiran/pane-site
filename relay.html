@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pane Relay: your Mac, from anywhere</title>
+<meta name="description" content="Pane Relay is a small menu-bar app for your Mac. Pair once by scanning a code, then Pane reaches the Mac from any network. No Tailscale, no VPN, no router settings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="brand" href="./"><i aria-hidden="true"></i>Pane</a>
+    <nav><a href="relay.html">Relay</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+  </header>
+
+  <section class="hero">
+    <span class="pill"><i aria-hidden="true"></i>for Pane on iPhone and iPad</span>
+    <h1><span class="light">Pane Relay</span>Your Mac, from anywhere.</h1>
+    <p class="lede">A small app that lives in your Mac’s menu bar. Pair once by scanning a code, then Pane reaches the Mac from any network: cellular, hotel Wi-Fi, the office. No Tailscale, no VPN, no router settings.</p>
+    <!-- DOWNLOAD: the DMG is attached to the latest GitHub release of pane-agent (the repo must be public for this link to work). -->
+    <a class="cta" href="https://github.com/Janjiran/pane-agent/releases/latest/download/PaneRelay.dmg">Download for Mac</a>
+    <a class="cta soon" href="#pricing">$19 a year · 14-day free trial</a>
+  </section>
+
+  <section class="grid" aria-label="What you get">
+    <article class="card">
+      <span class="tag">QR · 10 seconds</span>
+      <h2><span class="light">Pair with</span>a scan.</h2>
+      <p>Pane Relay shows a code in the menu bar. Point the iPhone camera at it and Pane opens, saves the Mac and pairs it. Every iPhone and iPad you own, no accounts.</p>
+    </article>
+    <article class="card">
+      <span class="tag">cellular · hotel Wi-Fi · CGNAT</span>
+      <h2><span class="light">Works where</span>VPNs are a hassle.</h2>
+      <p>Both sides dial out, so it works behind any router, carrier-grade NAT included. Pane still tries the Mac directly first and uses the relay only when nothing answers.</p>
+    </article>
+    <article class="card">
+      <span class="tag">no account · nothing stored</span>
+      <h2><span class="light">Private</span>by design.</h2>
+      <p>The relay forwards bytes between your device and your Mac and keeps none of them. It knows a Mac by a random id, not by you. Your Mac login stays in the Keychain, as always.</p>
+    </article>
+    <article class="card">
+      <span class="tag">launch at login</span>
+      <h2><span class="light">Set up once,</span>forget it.</h2>
+      <p>Pane Relay starts with your Mac, reconnects on its own and tells you when Screen Sharing is off. The menu bar shows what is paired and whether a session is live.</p>
+    </article>
+  </section>
+
+  <main class="doc">
+    <h2 id="how">How it works</h2>
+    <ol>
+      <li><strong>Install Pane Relay</strong> on the Mac and open it. It registers itself with the relay and shows a pairing code in the menu bar. Make sure <strong>Screen Sharing</strong> is on (System Settings › General › Sharing); the app says so when it is not.</li>
+      <li><strong>Scan the code</strong> with the iPhone or iPad camera. Pane opens, saves the Mac if it is new and pairs it. For a second device, scan again. You can also copy the code and paste it under <strong>Relay</strong> on the Mac’s Edit screen in Pane.</li>
+      <li><strong>Connect as usual.</strong> At home Pane talks to the Mac directly. Anywhere else, when the home address does not answer, it goes through the relay. Same sign-in, same session, same keyboard shortcuts.</li>
+    </ol>
+
+    <h2 id="pricing">Pricing</h2>
+    <p><strong>$19 a year per Mac</strong>, with unlimited iPhones and iPads. Every new Mac starts with a <strong>14-day free trial</strong>, no card needed. After that, buy a license key, paste it into Pane Relay and you are done. Prices in EUR and CZK are shown at checkout, and the receipt comes from Polar, our merchant of record.</p>
+    <!-- BUY: replace with the Polar checkout link once the product exists (docs/relay.md in the pane repo). -->
+    <p><a class="cta" href="https://polar.sh/understudios">Buy Pane Relay</a> <a class="cta soon" href="https://polar.sh/understudios/portal">Manage subscription</a></p>
+    <p class="note">The iPhone and iPad app stays free. Tailscale, VPNs and public addresses keep working in Pane without Pane Relay.</p>
+
+    <h2 id="requirements">Requirements</h2>
+    <ul>
+      <li>macOS 14 Sonoma or later, with Screen Sharing turned on.</li>
+      <li>Pane 1.1 or later on iPhone or iPad.</li>
+      <li>The Mac must be awake. Wake-on-LAN does not cross the internet; a Mac that is plugged in can be set to never sleep in System Settings › Energy.</li>
+    </ul>
+
+    <h2 id="faq">Questions</h2>
+    <h3>Is the connection encrypted?</h3>
+    <p>Both legs run over TLS to the relay, so nobody on the Wi-Fi can read anything. Inside the relay the stream passes through as it would on your own network, where your Mac login is encrypted by Screen Sharing and the screen itself is not. End-to-end encryption between the device and the Mac, which would keep even the relay blind, is in the works.</p>
+    <h3>What does the relay see?</h3>
+    <p>IP addresses, timestamps and the amount of data, for as long as a session lasts. No screen content, keystrokes or passwords are stored, and there is no account that ties a Mac to a person. Details in the <a href="privacy.html#relay">privacy policy</a>.</p>
+    <h3>Can I unpair a device?</h3>
+    <p>Yes: in Pane Relay’s menu next to the device, or in Pane under Edit › Relay › Unpair. Pairing codes can be regenerated from the Mac at any time.</p>
+    <h3>Do I need it at home?</h3>
+    <p>No. On your own Wi-Fi Pane connects directly, relay or not. Pane Relay is for everywhere else.</p>
+  </main>
+
+  <footer>
+    <a href="support.html">Support</a><a href="privacy.html">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a>
+    <p>© 2026 Understudios. Mac, macOS, iPhone, iPad, Face ID and Touch ID are trademarks of Apple Inc.</p>
+  </footer>
+</div>
+</body>
+</html>

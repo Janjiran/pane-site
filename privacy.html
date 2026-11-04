@@ -13,14 +13,14 @@
 <div class="wrap">
   <header class="site">
     <a class="brand" href="./"><i aria-hidden="true"></i>Pane</a>
-    <nav><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+    <nav><a href="relay.html">Relay</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
   </header>
 
   <main class="doc">
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective October 17, 2026 · Pane: Remote Desktop for Mac</p>
+    <p class="meta">Effective October 17, 2026, Pane Relay section added November 2026 · Pane: Remote Desktop for Mac</p>
 
-    <p class="note">The short version: Pane has no account and no server of its own. Your Macs, settings and passwords stay on your device. The app connects directly to your computers. The only data that leaves your device is anonymous usage analytics, and you can see exactly what that includes below.</p>
+    <p class="note">The short version: Pane has no account and no server of its own, unless you choose Pane Relay. Your Macs, settings and passwords stay on your device. The app connects directly to your computers. The only data that leaves your device is anonymous usage analytics, and you can see exactly what that includes below.</p>
 
     <h2>Who we are</h2>
     <p>Pane is made by Understudios (Jan Jiráň), Czech Republic. If you have any question about this policy, write to <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a>.</p>
@@ -36,8 +36,17 @@
       <li><strong>Clipboard.</strong> With <em>Shared clipboard</em> on, text you copy on the iPhone or iPad is sent to the Mac you are connected to, and text copied on the Mac is placed on your device’s clipboard. It travels only inside that VNC session and never to us.</li>
     </ul>
 
-    <h2>Direct connections, no relay</h2>
-    <p>Pane connects directly from your device to your Mac using VNC (the protocol behind macOS Screen Sharing), over your local network, a VPN such as Tailscale, or any address you provide. There is no Understudios relay, proxy or cloud service in between. Your session traffic is exchanged only between your device and your Mac.</p>
+    <h2>Direct connections by default</h2>
+    <p>Pane connects directly from your device to your Mac using VNC (the protocol behind macOS Screen Sharing), over your local network, a VPN such as Tailscale, or any address you provide. Unless you pair a Mac with Pane Relay (next section), there is no Understudios relay, proxy or cloud service in between, and your session traffic is exchanged only between your device and your Mac.</p>
+
+    <h2 id="relay">Pane Relay (optional, paid)</h2>
+    <p><a href="relay.html">Pane Relay</a> is a separate app for the Mac. When you pair a Mac with it, sessions that cannot reach the Mac directly go through a relay service run by Understudios on Cloudflare’s network (Cloudflare, Inc., servers in the EU and worldwide, chosen by proximity).</p>
+    <ul>
+      <li><strong>What the relay handles.</strong> The relay forwards the session between your device and your Mac. It does not store the session: no screen content, keystrokes, clipboard or passwords are kept. Inside the relay the VNC stream is handled as it is on your own network, where Screen Sharing encrypts your login and not the screen. Both connections to the relay use TLS.</li>
+      <li><strong>What the relay keeps.</strong> For each paired Mac: a random id, hashed access tokens, the names of paired devices (the device name you gave your iPhone or iPad) and when they paired, the trial end date and the status of the license. Cloudflare’s request logs hold IP addresses and timestamps for a limited time, as for any website.</li>
+      <li><strong>Purchases.</strong> License keys are sold by Polar (Polar Software Inc.), our merchant of record. Polar handles your email address, payment and receipts under its own privacy policy. We receive the license key and its status, not your payment details.</li>
+      <li><strong>Deleting.</strong> Unpairing a device in Pane or in Pane Relay removes it from the relay. Removing Pane Relay from the Mac (and its data in Application Support) abandons the host record, which is deleted after a period of inactivity.</li>
+    </ul>
     <p><strong>What is encrypted on the wire.</strong> Pane talks VNC directly to your Mac. Your login is encrypted; the screen, keystrokes and clipboard are not, so use it on your own Wi-Fi or over Tailscale or a VPN when away.</p>
 
     <h2 id="analytics">Analytics</h2>
