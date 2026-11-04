@@ -9,6 +9,9 @@
     { "pattern": "pane.video", "custom_domain": true },
     { "pattern": "www.pane.video", "custom_domain": true }
   ],
+  // Keep the workers.dev URL alive: wrangler turns it off once routes exist, and the shipped app and the
+  // DMG download link still point at pane-site.jiranjan03.workers.dev.
+  "workers_dev": true,
   "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
   "assets": {
