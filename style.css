@@ -107,7 +107,7 @@ h1{font-size:clamp(44px,5.3vw,70px);font-weight:600;letter-spacing:-0.05em;line-
 .c-hosts .shot.pair2{justify-content:center;gap:3%}
 .c-hosts .shot.pair2 img{width:44%}
 .c-pad{grid-row:span 2;background:#121320}
-.c-pad .shot{margin:auto -60px auto 14px;padding:36px 0 0}
+.c-pad .shot{margin:auto -60px -72px 14px;padding:36px 0 0}
 .c-pad .shot img{width:118%;max-width:none}
 .c-disp{background:#E7E5EB}
 .c-disp .shot{margin:auto 0 0;padding-bottom:26px}
