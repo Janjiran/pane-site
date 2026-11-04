@@ -4,6 +4,11 @@
   // same files from `main` for the links baked into shipped app builds; this is the copy the custom
   // domain will point at.
   "name": "pane-site",
+  // pane.video is registered in this Cloudflare account; custom domains create the DNS and certificate.
+  "routes": [
+    { "pattern": "pane.video", "custom_domain": true },
+    { "pattern": "www.pane.video", "custom_domain": true }
+  ],
   "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
   "assets": {
