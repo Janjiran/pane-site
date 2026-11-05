@@ -183,14 +183,14 @@ h1{font-size:clamp(44px,5.3vw,70px);font-weight:600;letter-spacing:-0.05em;line-
 /* ---- relay page: feature grid ---- */
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}
 .grid .cell{min-height:320px}
-.c-pair .shot{margin-bottom:-36px}
-.c-pair .shot img{width:88%;margin:0 auto;-webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent);mask-image:linear-gradient(to bottom,#000 70%,transparent)}
+.c-pair .shot{margin:auto 0 0;height:276px}
+.c-pair .shot img{width:62%;margin:0 auto}
 .c-route{color:#fff}
 .c-route .route-ill .lbl{opacity:.85}
 .c-route .route-ill .route{opacity:.55}
 .c-route .route-ill{display:block;width:100%;max-width:400px;height:auto;margin:auto auto 0;padding:16px 0 22px}
-.c-off .shot img{width:80%;margin:0 auto}
-.c-off .shot{padding-bottom:26px}
+.c-off .shot{margin:auto 0 0;height:210px}
+.c-off .shot img{width:78%;margin:0 auto}
 .c-priv .tags{display:flex;flex-wrap:wrap;gap:8px;margin:auto 0 0;padding:26px 0}
 .c-priv .tags span{padding:7px 12px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px var(--line);font-family:var(--mono);font-size:12.5px;color:#3F4048}
 /* ---- relay page: how it works ---- */
@@ -206,7 +206,8 @@ h1{font-size:clamp(44px,5.3vw,70px);font-weight:600;letter-spacing:-0.05em;line-
 .ill .menubar .active{width:20px;height:17px}
 .ill .menubar .batt{width:18px;height:9px}
 .ill .menubar time{width:auto}
-.ill .pair{position:absolute;top:26px;left:50%;width:210px;transform:translateX(-50%);border-radius:10px;box-shadow:0 20px 40px -16px rgba(0,0,0,.6),0 0 0 .5px rgba(0,0,0,.2)}
+.ill .pair{position:absolute;top:24px;left:50%;width:200px;transform:translateX(-50%)}
+.ill .pair,.ill .conn{filter:drop-shadow(0 20px 30px rgba(0,0,0,.55))}
 .cam{position:absolute;top:18px;bottom:-24px;left:50%;width:160px;translate:-50% 0;display:flex;flex-direction:column;align-items:center;padding-top:26px;border-radius:22px 22px 0 0;background:#0B0C0F;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.12)}
 .cam::before{content:"";position:absolute;top:8px;left:50%;width:44px;height:12px;transform:translateX(-50%);border-radius:999px;background:#000;box-shadow:0 0 0 1px rgba(255,255,255,.06)}
 .cam .view{position:absolute;inset:26px 6px 0;border-radius:14px 14px 0 0;background:linear-gradient(180deg,#2A2C3A,#15161C);overflow:hidden}
@@ -218,7 +219,7 @@ h1{font-size:clamp(44px,5.3vw,70px);font-weight:600;letter-spacing:-0.05em;line-
 .qrbox .bl{bottom:-9px;left:-9px;border-right:0;border-top:0}
 .qrbox .br{bottom:-9px;right:-9px;border-left:0;border-top:0}
 .cam .open{position:relative;z-index:1;margin-top:18px;padding:5px 12px;border-radius:999px;background:#FFD60A;color:#1D1D1F;font-size:10.5px;font-weight:600;white-space:nowrap}
-.ill .conn{position:absolute;top:34px;left:50%;width:82%;max-width:300px;transform:translateX(-50%);border-radius:14px;box-shadow:0 20px 40px -16px rgba(0,0,0,.7)}
+.ill .conn{position:absolute;top:34px;left:50%;width:82%;max-width:300px;transform:translateX(-50%)}
 /* ---- pricing ---- */
 .price{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;margin-top:28px;padding:36px;border-radius:var(--r);background:var(--card);box-shadow:var(--shadow)}
 .amount{display:flex;align-items:baseline;gap:4px;font-size:80px;font-weight:600;letter-spacing:-0.06em;line-height:1}
@@ -317,6 +318,7 @@ h1{font-size:clamp(44px,5.3vw,70px);font-weight:600;letter-spacing:-0.05em;line-
   .c-pad .shot{margin:auto 0 -40px}
   .c-pad .shot img{width:92%;margin:0 auto}
   .c-near .shot{margin-bottom:-44px}
+  .c-pair .shot img{width:72%}
   .relay-copy{padding:30px 24px 28px}
   .relay-mac{min-height:380px}
   .relay-mac .popover,.stage.mac .popover{width:330px;margin-left:-165px}
