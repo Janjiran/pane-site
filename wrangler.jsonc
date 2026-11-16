@@ -22,5 +22,10 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   },
-  "r2_buckets": [{ "binding": "DOWNLOADS", "bucket_name": "pane-downloads" }]
+  "r2_buckets": [{ "binding": "DOWNLOADS", "bucket_name": "pane-downloads" }],
+  // PostHog (EU) project token, the public one the app ships with: counts DMG downloads; empty turns it off.
+  "vars": {
+    "POSTHOG_HOST": "https://eu.i.posthog.com",
+    "POSTHOG_KEY": "phc_mTGwESoaf72rUGsdoTo4dXPu6E7PDNEjhUk7nZVZXXdX"
+  }
 }

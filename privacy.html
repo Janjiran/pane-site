@@ -22,7 +22,7 @@
 <main class="wrap">
   <article class="doc">
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective October 17, 2026, Pane Relay section added November 2026 · Pane: Remote Desktop for Mac</p>
+    <p class="meta">Effective October 17, 2026, Pane Relay section added November 2026, relay usage events November 16, 2026 · Pane: Remote Desktop for Mac</p>
 
     <p class="note">The short version: Pane has no account and no server of its own, unless you choose Pane Relay. Your Macs, settings and passwords stay on your device. The app connects directly to your computers. The only data that leaves your device is anonymous usage analytics, and you can see exactly what that includes below.</p>
 
@@ -48,6 +48,7 @@
     <ul>
       <li><strong>What the relay handles.</strong> The relay forwards the session between your device and your Mac. It does not store the session: no screen content, keystrokes, clipboard or passwords are kept. Inside the relay the VNC stream is handled as it is on your own network, where Screen Sharing encrypts your login and not the screen. Both connections to the relay use TLS.</li>
       <li><strong>What the relay keeps.</strong> For each paired Mac: a random id, hashed access tokens, the names of paired devices (the device name you gave your iPhone or iPad) and when they paired, the trial end date and the status of the license. Cloudflare’s request logs hold IP addresses and timestamps for a limited time, as for any website.</li>
+      <li><strong>Usage events.</strong> The relay reports anonymous usage events to PostHog, the same service the app uses (see Analytics below): a Mac was registered, a device paired, the Mac came online, a session started or ended and roughly how long it ran, and whether a license key was accepted. Each event carries the Mac’s random relay id and nothing else. A download of Pane Relay from pane.video is counted the same way, without your IP address or anything about your device.</li>
       <li><strong>Purchases.</strong> License keys are sold by Polar (Polar Software Inc.), our merchant of record. Polar handles your email address, payment and receipts under its own privacy policy. We receive the license key and its status, not your payment details.</li>
       <li><strong>Deleting.</strong> Unpairing a device in Pane or in Pane Relay removes it from the relay. Removing Pane Relay from the Mac (and its data in Application Support) abandons the host record, which is deleted after a period of inactivity.</li>
     </ul>
