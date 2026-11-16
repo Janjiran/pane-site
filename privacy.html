@@ -22,7 +22,7 @@
 <main class="wrap">
   <article class="doc">
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective October 17, 2026, Pane Relay section added November 2026, relay usage events November 16, 2026 · Pane: Remote Desktop for Mac</p>
+    <p class="meta">Effective October 17, 2026, Pane Relay section added November 2026, relay usage events and the Updates section November 16, 2026 · Pane: Remote Desktop for Mac</p>
 
     <p class="note">The short version: Pane has no account and no server of its own, unless you choose Pane Relay. Your Macs, settings and passwords stay on your device. The app connects directly to your computers. The only data that leaves your device is anonymous usage analytics, and you can see exactly what that includes below.</p>
 
@@ -53,6 +53,10 @@
       <li><strong>Deleting.</strong> Unpairing a device in Pane or in Pane Relay removes it from the relay. Removing Pane Relay from the Mac (and its data in Application Support) abandons the host record, which is deleted after a period of inactivity.</li>
     </ul>
     <p><strong>What is encrypted on the wire.</strong> Pane talks VNC directly to your Mac. Your login is encrypted; the screen, keystrokes and clipboard are not, so use it on your own Wi-Fi or over Tailscale or a VPN when away.</p>
+
+    <h2 id="updates">Updates</h2>
+    <p>When it starts, Pane asks Expo’s update service (EAS Update, run by Expo, Inc. in the United States) whether a newer version of the app’s own code is available, and downloads it for the next launch if there is one. The request carries the app version, the platform and a random identifier the update service uses to roll an update out gradually. It is not linked to analytics. Expo’s servers see your IP address, as any web server does.</p>
+    <p>Pane Relay on the Mac checks pane.video a few times a day for a newer version and offers it to you with an Update button; nothing is installed without you. That request carries nothing beyond the version it has and what Cloudflare’s request logs keep for any visit (see above).</p>
 
     <h2 id="analytics">Analytics</h2>
     <p>To understand which features are used and where connections fail, Pane sends anonymous usage events to <a href="https://posthog.com">PostHog</a>, hosted on servers in the European Union (Frankfurt, Germany). Analytics is off entirely in development builds.</p>
