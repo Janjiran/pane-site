@@ -12,7 +12,8 @@ export default {
     if (!match) return env.ASSETS.fetch(request);
     const object = await env.DOWNLOADS.get(match[1]);
     if (!object) return new Response('Not found', { status: 404 });
-    if (request.method === 'GET' && firstChunk(request)) ctx.waitUntil(countDownload(env, match[1]));
+    // Only the DMG: the app's own update check fetches latest.json from here a few times a day.
+    if (request.method === 'GET' && match[1].endsWith('.dmg') && firstChunk(request)) ctx.waitUntil(countDownload(env, match[1]));
     const headers = new Headers();
     object.writeHttpMetadata(headers);
     headers.set('etag', object.httpEtag);
