@@ -50,7 +50,7 @@
     <h1>Remote desktop to your Mac without port forwarding</h1>
     <p class="meta">Guide · November 19, 2026</p>
 
-    <p>You can reach your Mac from cellular or any other network without opening a port on your router: have the Mac make an outbound connection that your iPhone can meet. Tailscale, Pane Relay and the remote desktop vendors all work this way, so they get through carrier-grade NAT and never put Screen Sharing on the open internet.</p>
+    <p>You can reach your Mac from cellular or any other network without opening a port on your router, as long as the Mac makes an outbound connection that your iPhone can meet. Tailscale, Pane Relay and the remote desktop vendors all work this way, so they get through carrier-grade NAT and keep Screen Sharing off the open internet.</p>
 
     <div class="actions">
       <a class="store" href="https://apps.apple.com/app/id6823900085"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
@@ -60,34 +60,29 @@
     <h2>Why port forwarding fails or is risky</h2>
     <p>Forwarding port 5900 to your Mac only works if your router has a public IPv4 address. Many connections don’t have one:</p>
     <ul>
-      <li>Carrier-grade NAT (CGNAT). Mobile networks, and many fiber, fixed wireless and satellite providers, share one public address among many customers. Your router’s WAN address is then a private one, often starting with 100.64 to 100.127, and a port forward never sees traffic from outside. To check, compare the WAN address in your router’s admin page with what a “what is my IP” site shows. If they differ, you are behind CGNAT.</li>
-      <li>Double NAT. If your provider’s modem is also a router and your own router sits behind it, you have to forward the port on both, or switch the provider’s box to bridge mode.</li>
+      <li>Carrier-grade NAT (CGNAT). Mobile networks and many home internet providers share one public address among many customers. Your router’s WAN address is then a private one, often between 100.64 and 100.127, and a port forward never sees traffic from outside. To check, compare the WAN address in your router’s admin page with what a “what is my IP” site shows. If they differ, you are behind CGNAT.</li>
+      <li>Double NAT. If your provider’s modem is also a router and yours sits behind it, you have to forward the port on both, or switch the provider’s box to bridge mode.</li>
     </ul>
-    <p>Even when forwarding works, it is a bad idea for VNC. An open 5900 gets found by scanners within days and receives password guesses from then on. And with a VNC app, Screen Sharing encrypts only the login: the screen, keystrokes and clipboard would cross the internet in the clear.</p>
+    <p>Even when forwarding works, it is a bad idea for VNC. Scanners probe port 5900 all the time, so an open one starts collecting password guesses. And with a VNC app, Screen Sharing encrypts only the login, so the screen, keystrokes and clipboard would cross the internet in the clear.</p>
 
     <h2>How outbound-only connections work</h2>
-    <p>Home routers let out any connection that starts inside the network and drop unsolicited ones from outside. So instead of the iPhone dialing in, both ends dial out to a meeting point. Tailscale uses a coordination server to introduce the two devices and then tries to connect them directly. When it can’t, it passes traffic through its own relay servers. Pane Relay and the vendor tools have both ends connect to a relay that passes data between them.</p>
+    <p>Home routers let out connections that start inside the network and drop unsolicited ones from outside, so both ends dial out to a meeting point. Tailscale introduces the two devices, tries to connect them directly and falls back to its own relay servers when it can’t. Pane Relay and the vendor tools always pass data through a relay.</p>
 
     <h2>Option 1: Tailscale</h2>
-    <p>Tailscale is a mesh VPN, free for personal use, with a Tailscale account. Install it on the Mac and the iPhone, sign in to the same account on both, and the Mac gets a private address that works from any network. In Pane, enter that name or address under Away from home. WireGuard encrypts everything between the devices, which also covers the unencrypted parts of VNC. It carries any traffic, so SSH and file sharing work too.</p>
-    <p>The catch on iPhone is that iOS runs one VPN at a time. If you need a work VPN, you have to switch between the two. Setup details are in <a href="/screen-sharing-tailscale-iphone-ipad">Mac Screen Sharing over Tailscale</a>.</p>
+    <p>Tailscale is a mesh VPN, free for personal use, with a Tailscale account. Install it on the Mac and the iPhone, sign in to the same account on both, and the Mac gets a private address that works from any network. In Pane, enter that name or address under Away from home. WireGuard encrypts everything between the devices, including the parts of VNC that are otherwise unencrypted, and the tunnel carries any traffic, so SSH and file sharing work too.</p>
+    <p>On iPhone, Tailscale takes the VPN slot. iOS runs one VPN at a time, so if you need a work VPN you have to switch between the two. Setup details are in <a href="/screen-sharing-tailscale-iphone-ipad">Mac Screen Sharing over Tailscale</a>.</p>
 
     <h2>Option 2: Pane Relay</h2>
-    <p><a href="/relay">Pane Relay</a> is our menu-bar app for the Mac. It shows a code in the menu bar; scan it with the iPhone camera, and Pane opens, saves the Mac and pairs it. There is no account, and you can pair every iPhone and iPad you own. On your home network Pane still connects to the Mac directly. It goes through the relay only when the home address doesn’t answer.</p>
-    <ul>
-      <li>Price: $19 a year per Mac, unlimited iPhones and iPads, after a 14-day free trial with no card. It needs macOS 14 or later and Pane 1.1 or later.</li>
-      <li>VPN: it doesn’t use the iPhone’s VPN slot, so a work VPN can stay on.</li>
-      <li>Extras on iPhone: a Window view showing one app window at a time, and a Workspace list of the apps on every Space. The Mac asks once for Accessibility and Screen Recording permission for these.</li>
-      <li>Scope: it carries Pane sessions to that Mac and nothing else. For SSH or file sharing you still need something like Tailscale.</li>
-    </ul>
-    <p>What the relay sees: it runs on Cloudflare’s network and forwards the session without storing it, so no screen content, keystrokes, clipboard or passwords are kept. For each paired Mac it keeps a random id, hashed access tokens, the names of paired devices and when they paired, the trial end date and the license status. Cloudflare’s request logs hold IP addresses and timestamps for a limited time. The relay also reports anonymous usage events, such as a session starting or ending, tagged only with the Mac’s random id. The <a href="/privacy#relay">privacy policy</a> has the full list.</p>
-    <p class="note">Both legs to the relay use TLS, so nobody on your Wi-Fi or mobile network can read the session. It is not end-to-end encrypted today. Inside the relay the VNC stream is handled as it is on your own network, where Screen Sharing encrypts the login and not the screen. If that matters for your use, Tailscale is the stronger choice.</p>
+    <p><a href="/relay">Pane Relay</a> is our menu-bar app for the Mac. It shows a code in the menu bar; scan it with the iPhone camera, and Pane opens, saves the Mac and pairs it. There is no account. On your home network Pane still connects to the Mac directly and goes through the relay only when the home address doesn’t answer.</p>
+    <p>It costs $19 a year per Mac, with unlimited iPhones and iPads, after a 14-day free trial that needs no card. It needs macOS 14 or later and Pane 1.1 or later. It doesn’t use the iPhone’s VPN slot. On iPhone it adds a Window view that shows one app window at a time and a Workspace list of the apps on every Space; for these the Mac asks once for Accessibility and Screen Recording permission. It carries only Pane sessions to that Mac, so for SSH or file sharing you still need something like Tailscale.</p>
+    <p>The relay runs on Cloudflare’s network and forwards the session without storing it: no screen content, keystrokes, clipboard or passwords are kept. For each paired Mac it keeps a random id, hashed access tokens, the names of paired devices and when they paired, the trial end date and the license status. Cloudflare’s request logs hold IP addresses and timestamps for a limited time, and anonymous usage events carry only the Mac’s random id. The <a href="/privacy#relay">privacy policy</a> has the full list.</p>
+    <p class="note">Both legs to the relay use TLS, so nobody on your Wi-Fi or mobile network can read the session. It is not encrypted end to end today: inside the relay the VNC stream is handled as it is on your own network, where Screen Sharing encrypts the login and not the screen. If that matters to you, Tailscale is the stronger choice.</p>
 
     <h2>Option 3: a remote desktop vendor’s cloud</h2>
-    <p>Chrome Remote Desktop, TeamViewer, AnyDesk and similar tools need their own app on the Mac and an account. They don’t use macOS Screen Sharing at all. They fit best when you support other people’s computers, where you can’t set up Screen Sharing and a network for them.</p>
+    <p>Chrome Remote Desktop, TeamViewer, AnyDesk and similar tools need their own app on the Mac and an account. They fit best when you support other people’s computers and can’t set up Screen Sharing and a network for them.</p>
 
     <h2>Option 4: a VPN server on your own router</h2>
-    <p>Some routers and NAS boxes include a WireGuard or OpenVPN server. You open one port for the VPN, which is built for exposure to the internet, and keep 5900 closed. The iPhone’s VPN app then joins your home network, and Pane connects as if you were at home. Use the Mac’s IP address as the Away from home address, because <code>.local</code> names usually don’t resolve over a VPN, and reserve that IP for the Mac in your router’s DHCP settings. This needs a public IP address, so it doesn’t help behind CGNAT, and it uses the iPhone’s VPN slot. No third party is involved.</p>
+    <p>Some routers and NAS boxes include a WireGuard or OpenVPN server. You open one port for the VPN and keep 5900 closed. The iPhone’s VPN app then joins your home network and Pane connects as if you were at home. Use the Mac’s IP address as the Away from home address, because <code>.local</code> names usually don’t resolve over a VPN, and reserve that IP in your router’s DHCP settings. This needs a public IP address, so it doesn’t help behind CGNAT, and it takes the iPhone’s VPN slot.</p>
 
     <h2>Which one to choose</h2>
     <table>
@@ -100,8 +95,8 @@
     </table>
 
     <h2>What every option needs</h2>
-    <p>The Mac has to be awake. Wake-on-LAN works only on the local network, so none of these can wake a sleeping Mac from outside. On a desktop Mac, turn on Prevent automatic sleeping when the display is off in System Settings › Energy. On a MacBook, keep it on power and use the matching option in System Settings › Battery › Options. <a href="/wake-mac-from-iphone">Waking a Mac from iPhone</a> covers what does work at home.</p>
-    <p>Screen Sharing has to be on, in System Settings › General › Sharing. Pane Relay warns you in the menu bar when it is off. If you haven’t set it up yet, start with <a href="/control-mac-from-iphone">how to control your Mac from iPhone</a>.</p>
+    <p>The Mac has to be awake. Wake-on-LAN works only on the local network, so none of these can wake a sleeping Mac from outside. On a desktop Mac, turn on Prevent automatic sleeping when the display is off in System Settings › Energy. On a MacBook, keep it on power and use the matching option in System Settings › Battery › Options. <a href="/wake-mac-from-iphone">Waking a Mac from iPhone</a> covers what works at home.</p>
+    <p>Screen Sharing has to be on, in System Settings › General › Sharing, and Pane Relay tells you when it is off. If you haven’t set it up yet, start with <a href="/control-mac-from-iphone">how to control your Mac from iPhone</a>.</p>
 
     <div class="actions">
       <a class="store" href="https://apps.apple.com/app/id6823900085"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
@@ -122,7 +117,7 @@
 <footer class="foot">
   <div class="wrap">
     <a class="brand" href="/"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
-    <nav><a href="/">Pane for iPhone and iPad</a><a href="/relay">Pane Relay</a><a href="/support">Support</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
+    <nav><a href="/">Pane for iPhone and iPad</a><a href="/relay">Pane Relay</a><a href="/support">Support</a><a href="/support#guides">Guides</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
     <p>© 2026 Understudios. Mac, macOS, iPhone, iPad, Face ID and Touch ID are trademarks of Apple Inc.</p>
   </div>
 </footer>

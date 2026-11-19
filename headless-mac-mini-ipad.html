@@ -50,7 +50,7 @@
     <h1>Run a headless Mac mini from your iPad or iPhone</h1>
     <p class="meta">Guide · November 19, 2026</p>
 
-    <p>Turn on Screen Sharing on the Mac mini once, and from then on you can control it from your iPad or iPhone with a VNC app such as Pane, with no monitor, keyboard or mouse attached. Sidecar can’t do this. It turns an iPad into a second display for a Mac you are already sitting at, and you start it from the Mac, so it gives you no way into a Mac that has no screen.</p>
+    <p>Turn on Screen Sharing on the Mac mini once, and from then on you can control it from your iPad or iPhone with a VNC app such as Pane, with no monitor, keyboard or mouse attached. Sidecar can’t do this: it turns an iPad into a second display for a Mac you are already sitting at, and you start it from the Mac.</p>
 
     <div class="actions">
       <a class="store" href="https://apps.apple.com/app/id6823900085"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
@@ -58,22 +58,22 @@
     </div>
 
     <h2>First setup needs a screen once</h2>
-    <p>A new or freshly erased Mac mini starts in Setup Assistant, and Screen Sharing stays off until you turn it on. Borrow a TV or monitor with HDMI, a keyboard and a mouse for the first setup.</p>
+    <p>A new or freshly erased Mac mini starts in Setup Assistant with Screen Sharing off, so borrow a TV or monitor with HDMI, a keyboard and a mouse for the first setup.</p>
     <ol>
       <li>Go through Setup Assistant and create your user account.</li>
       <li>Open System Settings › General › Sharing and turn on Screen Sharing. Click the ⓘ next to it and make sure your user is allowed.</li>
       <li>Note the Local hostname at the bottom of the Sharing pane, for example <code>mini.local</code>.</li>
       <li>Optionally, turn on Remote Login in the same pane. SSH gives you a second way in if Screen Sharing ever stops answering.</li>
     </ol>
-    <p>Once Screen Sharing is on you can unplug the borrowed gear and finish setting up from the iPad, or from another Mac using its Screen Sharing app. Connecting from Pane is covered in <a href="/control-mac-from-iphone">how to control your Mac from iPhone</a>.</p>
+    <p>After that you can unplug the borrowed gear and finish setting up from the iPad, or from another Mac with its Screen Sharing app. Connecting from Pane is covered in <a href="/control-mac-from-iphone">how to control your Mac from iPhone</a>.</p>
 
     <h2>Restarts, FileVault and the login window</h2>
-    <p>Setup Assistant usually turns on FileVault. With FileVault on, a restarted Mac stops at a disk unlock screen before macOS loads. Screen Sharing isn’t running at that point, so no VNC app can get you past it, and someone has to type the password at the Mac. For a restart you start yourself, run <code>sudo fdesetup authrestart</code> in Terminal during a Screen Sharing session. The Mac then restarts once without stopping at the unlock screen. A power cut still leaves it waiting there.</p>
-    <p>With FileVault off, the mini starts to the login window, and Screen Sharing works there: connect with Pane and sign in on the remote login window. Apps that open at login are not running yet, though. Pane Relay is one of them, and depending on how you installed it, Tailscale may be too. If you count on either to reach the mini from outside, a restart while you are away can lock you out until you get home.</p>
-    <p>Automatic login avoids that. In System Settings › Users &amp; Groups, set Automatically log in as to your account, and the mini comes back to your desktop after any restart. macOS offers this only with FileVault off. The cost is physical security: anyone who walks off with the mini gets your files and every app you are signed in to. That can be acceptable for a mini in a locked home office. In a shared space, keep FileVault on and live with unlocking it by hand after a restart.</p>
+    <p>Setup Assistant usually turns on FileVault. With FileVault on, a restarted Mac stops at a disk unlock screen before macOS loads. Screen Sharing isn’t running yet, so no VNC app can get you past it, and someone has to type the password at the Mac. For a restart you start yourself, run <code>sudo fdesetup authrestart</code> in Terminal during a Screen Sharing session, and the Mac restarts once without stopping at the unlock screen. A power cut still leaves it waiting there.</p>
+    <p>With FileVault off, the mini starts to the login window, and Screen Sharing works there: connect with Pane and sign in on the remote login window. Apps that open at login aren’t running yet, though. Pane Relay is one of them, and depending on how you installed it, Tailscale may be too. If you rely on either from outside, a restart while you are away can lock you out until you get home.</p>
+    <p>Automatic login avoids that. In System Settings › Users &amp; Groups, set Automatically log in as to your account, and the mini comes back to your desktop after any restart. macOS offers this only with FileVault off, and the cost is physical security: anyone who walks off with the mini gets your files and every app you are signed in to. That can be acceptable in a locked home office. In a shared space, keep FileVault on and unlock it by hand after a restart.</p>
 
     <h2>Screen resolution without a display</h2>
-    <p>With no display attached, macOS falls back to a default resolution for Screen Sharing, and System Settings › Displays may offer few other choices. If text on the iPad looks too small or soft, get an HDMI dummy plug, a small adapter sold as a headless display emulator that makes the Mac believe a monitor is connected. With it plugged in, choose a resolution in System Settings › Displays. An iPad screen is closer to 4:3 than most monitors, so a 16:10 resolution leaves less empty border than 16:9.</p>
+    <p>With no display attached, macOS falls back to a default resolution for Screen Sharing, and System Settings › Displays may offer few other choices. If text on the iPad looks too small or soft, get an HDMI dummy plug, a small adapter sold as a headless display emulator that makes the Mac believe a monitor is connected, and choose a resolution in System Settings › Displays. An iPad screen is closer to 4:3 than most monitors, so a 16:10 resolution leaves less empty border than 16:9.</p>
     <p>If you connect and see a black screen or only a login window, the mini is locked or another user is logged in. Sign in on the remote login window. macOS may ask whether to share the current display or open a virtual display for you.</p>
 
     <h2>Keep it awake</h2>
@@ -87,14 +87,15 @@
     <h2>Reach it from outside your home</h2>
     <p>Your router blocks connections that start on the internet. Use one of these instead of forwarding a port:</p>
     <ul>
-      <li>Tailscale, free for personal use, on the mini and on the iPad or iPhone, signed in to the same account. Put the mini’s Tailscale name under Away from home in Pane. In the Tailscale admin console, turn off key expiry for the mini, or it drops off your network when its key expires (after 180 days by default). Full steps: <a href="/screen-sharing-tailscale-iphone-ipad">Mac Screen Sharing over Tailscale</a>.</li>
-      <li><a href="/relay">Pane Relay</a>, a menu-bar app for the mini, $19 a year after a 14-day free trial. Pairing normally means scanning a code shown in the Mac’s menu bar, which is awkward when your only view of that menu bar is on the iPhone. Copy the code instead: with Shared clipboard on, open Pane Relay’s menu during a Pane session, click Copy pairing code, then paste it under Pane Relay on the Mac’s Edit screen in Pane. Compared with the other options in <a href="/remote-access-mac-without-port-forwarding">remote desktop without port forwarding</a>.</li>
+      <li>Tailscale, free for personal use, on the mini and on the iPad or iPhone, signed in to the same account. Put the mini’s Tailscale name under Away from home in Pane, and turn off key expiry for the mini in the Tailscale admin console, or it drops off your network when its key expires (after 180 days by default). Full steps: <a href="/screen-sharing-tailscale-iphone-ipad">Mac Screen Sharing over Tailscale</a>.</li>
+      <li><a href="/relay">Pane Relay</a>, a menu-bar app for the mini, $19 a year after a 14-day free trial. You normally pair it by scanning a code in the Mac’s menu bar, which is awkward when the only view of that menu bar is on your iPhone. Copy the code instead: with Shared clipboard on, open Pane Relay’s menu during a Pane session, click Copy pairing code, and paste it under Pane Relay on the Mac’s Edit screen in Pane.</li>
     </ul>
+    <p><a href="/remote-access-mac-without-port-forwarding">Remote desktop without port forwarding</a> compares these with the other options.</p>
 
     <h2>iPad specifics</h2>
-    <p>On iPad, Pane shows a session panel beside the Mac’s screen with latency, frame rate, bandwidth, the current display and Quality. If the session feels slow, check latency there, and set Quality to Fast on a weak connection. Tap 1/2 at the top to step to the next display, then to all of them side by side.</p>
-    <p>A hardware keyboard makes a headless mini much easier to live with. The keyboard button at the right of the dock decides whether keys go to the Mac or stay on the iPad. iPadOS keeps a few shortcuts for itself, including ⌘H, ⌘Tab and ⌘Space, so send those with the modifier keys in the dock. Under Settings for this Mac, Lock Mac on disconnect locks the mini when you end a session, which is worth turning on for a computer nobody is watching.</p>
-    <p>The Window view and Workspace list that Pane Relay adds are iPhone-only for now. On iPad you work with the full desktop.</p>
+    <p>On iPad, Pane shows a session panel beside the Mac’s screen with latency, frame rate, bandwidth, the current display and Quality. If the session feels slow, check latency there and set Quality to Fast. Tap 1/2 at the top to step to the next display, then to all of them side by side.</p>
+    <p>With a hardware keyboard attached, the keyboard button at the right of the dock decides whether keys go to the Mac or stay on the iPad. iPadOS keeps a few shortcuts for itself, including ⌘H, ⌘Tab and ⌘Space, so send those with the modifier keys in the dock. Under Settings for this Mac, turn on Lock Mac on disconnect so the mini locks when you end a session.</p>
+    <p>The Window view and Workspace list that Pane Relay adds work only on iPhone for now. On iPad you get the full desktop.</p>
 
     <div class="actions">
       <a class="store" href="https://apps.apple.com/app/id6823900085"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
@@ -115,7 +116,7 @@
 <footer class="foot">
   <div class="wrap">
     <a class="brand" href="/"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
-    <nav><a href="/">Pane for iPhone and iPad</a><a href="/relay">Pane Relay</a><a href="/support">Support</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
+    <nav><a href="/">Pane for iPhone and iPad</a><a href="/relay">Pane Relay</a><a href="/support">Support</a><a href="/support#guides">Guides</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
     <p>© 2026 Understudios. Mac, macOS, iPhone, iPad, Face ID and Touch ID are trademarks of Apple Inc.</p>
   </div>
 </footer>

@@ -50,8 +50,8 @@
     <h1>How to control your Mac from iPhone</h1>
     <p class="meta">Guide · November 19, 2026</p>
 
-    <p>Your Mac already has a remote control server built in. Screen Sharing ships with macOS and speaks the standard VNC protocol, so once you switch it on, a VNC app on your iPhone can see and control the Mac. There is nothing to install on the Mac and no account to create.</p>
-    <p>The steps below use Pane, our free VNC app for iPhone and iPad. The Mac side is the same whichever VNC app you choose.</p>
+    <p>Your Mac already has a remote control server built in. Screen Sharing ships with macOS and speaks the standard VNC protocol, so once you switch it on, any VNC app on your iPhone can see and control the Mac, with nothing to install on the Mac and no account to create.</p>
+    <p>The steps below use Pane, our free VNC app for iPhone and iPad. The Mac side is the same for any VNC app.</p>
 
     <div class="actions">
       <a class="store" href="https://apps.apple.com/app/id6823900085"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
@@ -98,7 +98,7 @@
     </ol>
 
     <h2>Connect on the same Wi-Fi</h2>
-    <p>Join the same Wi-Fi network as the Mac on your iPhone and open Pane. The first time it looks for computers, iOS asks for Local Network access. Allow it. Without that permission Pane can’t find Macs, and <code>.local</code> names and local IP addresses fail. If you tapped Don’t Allow, turn it back on in Settings › Apps › Pane › Local Network.</p>
+    <p>Connect the iPhone to the same Wi-Fi as the Mac and open Pane. The first time it looks for computers, iOS asks for Local Network access. Allow it, or Pane can’t find Macs and <code>.local</code> names and local IP addresses fail. If you tapped Don’t Allow, turn it back on in Settings › Apps › Pane › Local Network.</p>
     <ol>
       <li>Tap Connect to a Mac. Macs with Screen Sharing on appear under Macs on this network within a few seconds. Pane finds them over Bonjour, Apple’s local network discovery.</li>
       <li>Tap your Mac, or type its <code>.local</code> name or IP address into Address. Pane assumes port 5900, the port Screen Sharing listens on, so you only need Advanced if you changed it.</li>
@@ -108,24 +108,24 @@
 
     <h2>Using a Mac on a phone screen</h2>
     <p>A Mac desktop is a lot to fit on a phone, so turn the iPhone sideways and zoom in on the part you are working in. Pinch to zoom, and double tap with two fingers to fit the whole screen again.</p>
-    <p>By default the iPhone screen acts as a trackpad. One finger moves the Mac’s pointer, a tap clicks wherever the pointer is, a two-finger tap right-clicks and two fingers scroll. Your finger never covers what you are clicking, which helps with small buttons and menus. If you would rather tap things directly, switch the Trackpad button in the dock to Touch and the pointer goes where you tap.</p>
+    <p>By default the iPhone screen acts as a trackpad. One finger moves the Mac’s pointer, a tap clicks wherever the pointer is, a two-finger tap right-clicks and two fingers scroll. Your finger never covers what you are clicking, which helps with small buttons and menus. To tap things directly instead, switch the Trackpad button in the dock to Touch.</p>
     <p>Mac shortcuts need modifier keys that the iPhone keyboard doesn’t have. Pane keeps ⌘ ⌥ ⌃ ⇧ and esc on screen during a session: tap a modifier once to hold it for the next key, or twice to keep it held. Swipe left or right with three fingers to switch Spaces, or up for Mission Control. A three-finger tap brings back hidden controls without clicking anything on the Mac. The full gesture table is on the <a href="/support#gestures">support page</a>.</p>
-    <p>If you pair the Mac with <a href="/relay">Pane Relay</a>, the iPhone also gets a Window view that shows one app window with nothing around it, and a Workspace list of the apps open on each Space. Both need Pane Relay on the Mac, and both are iPhone-only for now.</p>
+    <p>If you pair the Mac with <a href="/relay">Pane Relay</a>, the iPhone also gets a Window view that shows one app window with nothing around it, and a Workspace list of the apps open on each Space. Both need Pane Relay on the Mac and work only on iPhone for now.</p>
 
     <h2>Away from home</h2>
     <p>Your home router blocks connections that start on the internet, so everything above works only at home. Use one of these to connect from elsewhere:</p>
     <ul>
       <li>Tailscale is free for personal use. You install it on the Mac and the iPhone, sign in to the same account on both, and enter the Mac’s Tailscale name under Away from home in Pane. Full steps: <a href="/screen-sharing-tailscale-iphone-ipad">Mac Screen Sharing over Tailscale</a>.</li>
-      <li>Pane Relay is our menu-bar app for the Mac. You pair it by scanning a code with the iPhone camera, and there is no account. At home Pane still connects to the Mac directly and uses the relay only when the home address doesn’t answer. It costs $19 a year per Mac after a 14-day free trial, and the trial needs no card.</li>
+      <li>Pane Relay is our menu-bar app for the Mac. You pair it by scanning a code with the iPhone camera, with no account. At home Pane still connects to the Mac directly and uses the relay only when the home address doesn’t answer. It costs $19 a year per Mac after a 14-day free trial, and the trial needs no card.</li>
     </ul>
-    <p>Don’t forward port 5900 on your router. That exposes your Mac’s login to anyone scanning the internet, and the screen and keystrokes would travel unencrypted. <a href="/remote-access-mac-without-port-forwarding">Remote desktop without port forwarding</a> compares the safer options. Whichever you pick, the Mac has to be awake, and <a href="/wake-mac-from-iphone">waking it from the iPhone</a> works only on the home network.</p>
+    <p>Don’t forward port 5900 on your router. That puts your Mac’s login in front of anyone scanning the internet, and the screen and keystrokes would travel unencrypted. <a href="/remote-access-mac-without-port-forwarding">Remote desktop without port forwarding</a> compares the safer options. Whichever you pick, the Mac has to be awake, and <a href="/wake-mac-from-iphone">waking it from the iPhone</a> works only on the home network.</p>
 
     <h2>What is encrypted</h2>
-    <p>When a VNC app connects to Screen Sharing, your login is encrypted, but the screen, keystrokes and clipboard are not. On your own Wi-Fi that is usually fine. On public Wi-Fi, connect over Tailscale, which encrypts the whole session between the iPhone and the Mac with WireGuard.</p>
-    <p class="note">Pane Relay uses TLS between each device and the relay, so other people on the same Wi-Fi can’t read the session. It is not end-to-end encrypted today. Inside the relay the stream is handled as it would be on your own network, and none of it is stored. The <a href="/privacy#relay">privacy policy</a> has the details.</p>
+    <p>When a VNC app connects to Screen Sharing, your login is encrypted and the screen, keystrokes and clipboard are not. On your own Wi-Fi that is usually an acceptable risk. On public Wi-Fi, connect over Tailscale, which encrypts the whole session between the iPhone and the Mac with WireGuard.</p>
+    <p class="note">Pane Relay uses TLS between each device and the relay, so other people on the same Wi-Fi can’t read the session. It is not encrypted end to end today: inside the relay the stream is handled as it would be on your own network, though none of it is stored. The <a href="/privacy#relay">privacy policy</a> has the details.</p>
 
     <h2>When a different tool fits better</h2>
-    <p>Pane is built for the Screen Sharing in macOS, and it assumes you can change settings on the Mac. Chrome Remote Desktop, TeamViewer and AnyDesk work another way: each needs its own app on the Mac and an account. That approach makes more sense when you help someone else with their computer and can’t set up their Mac and router yourself, or when you also need to reach Windows PCs.</p>
+    <p>Pane is built for the Screen Sharing in macOS and assumes you can change settings on the Mac. Chrome Remote Desktop, TeamViewer and AnyDesk each need their own app on the Mac and an account. They suit you better when you help someone else with a computer you can’t set up yourself, or when you also need to reach Windows PCs.</p>
 
     <div class="actions">
       <a class="store" href="https://apps.apple.com/app/id6823900085"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
@@ -146,7 +146,7 @@
 <footer class="foot">
   <div class="wrap">
     <a class="brand" href="/"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
-    <nav><a href="/">Pane for iPhone and iPad</a><a href="/relay">Pane Relay</a><a href="/support">Support</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
+    <nav><a href="/">Pane for iPhone and iPad</a><a href="/relay">Pane Relay</a><a href="/support">Support</a><a href="/support#guides">Guides</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
     <p>© 2026 Understudios. Mac, macOS, iPhone, iPad, Face ID and Touch ID are trademarks of Apple Inc.</p>
   </div>
 </footer>
