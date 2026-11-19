@@ -37,19 +37,23 @@ export default {
 
 /** A static asset. Pages are counted (no cookie, no identifier); images may be cached for a week. */
 async function page(request, env, ctx, url) {
-  const asset = await env.ASSETS.fetch(request);
+  // `/get/<source>` is `/get` with the source in the path: the app types that address into Spotlight on the
+  // Mac, where a `?` is one more key to get wrong.
+  const alias = /^\/get\/([a-z-]+)$/.exec(url.pathname);
+  const pathname = alias ? '/get' : url.pathname;
+  const asset = await env.ASSETS.fetch(alias ? new Request(new URL('/get', url), request) : request);
   const response = new Response(asset.body, asset);
   response.headers.set('strict-transport-security', 'max-age=31536000');
   if (url.pathname.startsWith('/img/') && asset.status === 200) response.headers.set('cache-control', 'public, max-age=604800');
   const isPage = request.method === 'GET' && asset.status === 200 && (asset.headers.get('content-type') ?? '').includes('text/html');
   if (isPage && !url.pathname.startsWith('/review') && !BOT.test(request.headers.get('user-agent') ?? '')) {
     ctx.waitUntil(capture(env, '$pageview', {
-      $pathname: url.pathname,
-      $current_url: `${url.origin}${url.pathname}`,
+      $pathname: pathname,
+      $current_url: `${url.origin}${pathname}`,
       $referring_domain: referrer(request),
       device: device(request),
       // Where a link to the page came from: the app's own links and the "send to my Mac" share carry `s`.
-      source: url.searchParams.get('s') ?? url.searchParams.get('utm_source') ?? undefined,
+      source: alias?.[1] ?? url.searchParams.get('s') ?? url.searchParams.get('utm_source') ?? undefined,
     }));
   }
   return response;

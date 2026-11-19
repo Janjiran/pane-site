@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac Screen Sharing over Tailscale from iPhone and iPad</title>
+<meta name="description" content="Reach your Mac’s Screen Sharing from iPhone or iPad over Tailscale: MagicDNS names, 100.x addresses, port 5900 in ACLs, direct vs relayed connections.">
+<link rel="canonical" href="https://pane.video/screen-sharing-tailscale-iphone-ipad">
+<meta name="apple-itunes-app" content="app-id=6823900085">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Pane">
+<meta property="og:url" content="https://pane.video/screen-sharing-tailscale-iphone-ipad">
+<meta property="og:title" content="Mac Screen Sharing over Tailscale from iPhone and iPad">
+<meta property="og:description" content="Reach your Mac’s Screen Sharing from iPhone or iPad over Tailscale: MagicDNS names, 100.x addresses, port 5900 in ACLs, direct vs relayed connections.">
+<meta property="og:image" content="https://pane.video/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=d257a8b8">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Mac Screen Sharing over Tailscale from iPhone and iPad",
+  "description": "Reach your Mac’s Screen Sharing from iPhone or iPad over Tailscale: MagicDNS names, 100.x addresses, port 5900 in ACLs, direct vs relayed connections.",
+  "image": "https://pane.video/img/og.png",
+  "datePublished": "2026-11-19",
+  "dateModified": "2026-11-19",
+  "author": { "@type": "Organization", "name": "Understudios", "url": "https://pane.video/" },
+  "publisher": { "@type": "Organization", "name": "Understudios", "url": "https://pane.video/" },
+  "mainEntityOfPage": "https://pane.video/screen-sharing-tailscale-iphone-ipad"
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
+    <nav><a href="/relay">Relay</a><a href="/support">Support</a><a href="/privacy">Privacy</a><a class="cta" href="https://apps.apple.com/app/id6823900085">App Store</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="doc">
+    <h1>Mac Screen Sharing over Tailscale from iPhone and iPad</h1>
+    <p class="meta">Guide · November 19, 2026</p>
+
+    <p>Install Tailscale on the Mac and on your iPhone or iPad, sign in to the same tailnet on both, and the Mac’s Screen Sharing is reachable at its Tailscale name or 100.x address from any network. Tailscale encrypts the connection with WireGuard, which also covers the parts of a VNC session that are not encrypted on their own.</p>
+    <p>Pane and Understudios are not affiliated with Tailscale. This is how the two fit together.</p>
+
+    <div class="actions">
+      <a class="store" href="https://apps.apple.com/app/id6823900085"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+      <span class="fine">free · iPhone and iPad · works with Tailscale</span>
+    </div>
+
+    <h2>Set up both devices</h2>
+    <p>Screen Sharing has to be on first (System Settings › General › Sharing). If it isn’t, follow <a href="/control-mac-from-iphone">how to control your Mac from iPhone</a> and test it on your home Wi-Fi before adding Tailscale.</p>
+    <ol>
+      <li>Install Tailscale on the Mac from <a href="https://tailscale.com/download/mac">tailscale.com/download</a> and sign in.</li>
+      <li>Make sure Tailscale starts when the Mac does. Turn on its launch at login option, or add it in System Settings › General › Login Items (Login Items &amp; Extensions on macOS 15 and later).</li>
+      <li>Install Tailscale on the iPhone or iPad from the App Store and sign in to the same tailnet.</li>
+      <li>Leave the VPN connected on the iPhone. When it is off, the Mac’s Tailscale address doesn’t answer, and Pane reports Can’t reach.</li>
+      <li>In the Tailscale admin console, check that MagicDNS is on under DNS. Newer tailnets have it on by default.</li>
+    </ol>
+
+    <h2>Which address to use</h2>
+    <p>Your Mac has three Tailscale addresses, and any of them works in Pane:</p>
+    <ul>
+      <li>The short MagicDNS name, such as <code>studio</code>, which is the machine name shown in the admin console.</li>
+      <li>The full name, such as <code>studio.tail1234.ts.net</code>. Use it if the short name doesn’t resolve on your phone.</li>
+      <li>The <code>100.x.y.z</code> address. It stays the same for as long as the Mac is in your tailnet, and works even with MagicDNS off.</li>
+    </ul>
+    <p>The Tailscale app on the iPhone lists your devices with their names and addresses.</p>
+
+    <h2>Add it in Pane</h2>
+    <p>For a Mac you already use at home, open its details in Pane, tap Edit and enter the Tailscale name or address under Away from home. Pane tries the home address first. When that doesn’t answer, it tries the remote address, and the connecting screen also has a Try remote address button. At home you keep the fast local connection, and anywhere else the same saved Mac works over Tailscale.</p>
+    <p>You can also add a Mac with only its Tailscale address: tap Connect to a Mac and type the name or 100.x address into Address. The port stays 5900. Sign in with your Mac user name and password as usual. Connections over Tailscale don’t use the iPhone’s Local Network permission, so they work even if you turned it off.</p>
+
+    <h2>Custom access controls</h2>
+    <p>The default Tailscale policy lets your devices reach each other, so most people can skip this. If you have edited the policy file, a rule must allow your iPhone or iPad to reach the Mac on TCP port 5900. In the grants syntax that is <code>tcp:5900</code>. In the older ACL syntax it is port <code>5900</code> on the Mac as the destination. Without that rule both devices show as connected in Tailscale, and Pane still can’t reach the Mac.</p>
+
+    <h2>Direct and relayed connections</h2>
+    <p>Tailscale tries to connect your devices directly. When the network on either side gets in the way, traffic goes through Tailscale’s DERP relay servers instead. A relayed connection works, but the extra hop adds latency and limits speed, and screen sharing feels it. Cellular networks often sit behind carrier-grade NAT, which makes direct connections harder, so the session can feel slower on cellular than on Wi-Fi.</p>
+    <p>To check, run <code>tailscale status</code> in Terminal on the Mac and look at the iPhone’s line, or run <code>tailscale ping</code> followed by the iPhone’s name. A reply “via DERP” means relayed. An IP address and port means direct. Allowing UPnP or NAT-PMP on your home router can help Tailscale find a direct path. In Pane, setting Quality to Fast helps on a slow link, and on iPad the session panel shows the latency.</p>
+
+    <h2>Encryption</h2>
+    <p>On its own, VNC to the Mac encrypts the login and not the screen, keystrokes or clipboard. Over Tailscale the whole session is inside WireGuard between the iPhone and the Mac, so it is safe to use on public Wi-Fi. That is also why <a href="/support#encryption">our support page</a> recommends Tailscale or another VPN away from home.</p>
+
+    <h2>If it stops working</h2>
+    <ul>
+      <li>The Tailscale VPN is off on the iPhone. Open the app and connect.</li>
+      <li>Tailscale isn’t running on the Mac, for example after a restart if the Mac is waiting at the login window. Whether it connects before anyone logs in depends on how you installed it.</li>
+      <li>The Mac’s node key expired. Keys expire after 180 days by default. For a Mac that stays home, turn off key expiry for it in the admin console.</li>
+      <li>The Mac is asleep. Tailscale can’t wake it, and Wake-on-LAN works only on the local network. See <a href="/wake-mac-from-iphone">wake a sleeping Mac from iPhone</a>.</li>
+    </ul>
+
+    <h2>When Tailscale doesn’t fit</h2>
+    <p>iOS runs one VPN at a time, so Tailscale competes with a work VPN or any other VPN app you need. On a managed phone your company may not let you add a VPN at all. Some people also don’t want another account, or don’t want to install a VPN on a family member’s devices.</p>
+    <p>In those cases <a href="/relay">Pane Relay</a> is the alternative. It is a menu-bar app for the Mac, you pair it by scanning a code, it needs no account and doesn’t use the iPhone’s VPN slot. It costs $19 a year per Mac after a 14-day free trial. Its limits: it is not end-to-end encrypted today, and it carries only Pane sessions. <a href="/remote-access-mac-without-port-forwarding">Remote desktop without port forwarding</a> compares all the options.</p>
+
+    <div class="actions">
+      <a class="store" href="https://apps.apple.com/app/id6823900085"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+      <span class="fine">free · iPhone and iPad · no VPN: <a href="/relay">Pane Relay</a></span>
+    </div>
+
+    <h2>Related guides</h2>
+    <ul>
+      <li><a href="/control-mac-from-iphone">How to control your Mac from iPhone</a></li>
+      <li><a href="/headless-mac-mini-ipad">Run a headless Mac mini from your iPad or iPhone</a></li>
+      <li><a href="/remote-access-mac-without-port-forwarding">Remote desktop to your Mac without port forwarding</a></li>
+      <li><a href="/wake-mac-from-iphone">Wake a sleeping Mac from iPhone and connect</a></li>
+      <li><a href="/support">Pane support: setup, errors and gestures</a></li>
+    </ul>
+  </article>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
+    <nav><a href="/">Pane for iPhone and iPad</a><a href="/relay">Pane Relay</a><a href="/support">Support</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
+    <p>© 2026 Understudios. Mac, macOS, iPhone, iPad, Face ID and Touch ID are trademarks of Apple Inc.</p>
+  </div>
+</footer>
+</body>
+</html>
