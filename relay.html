@@ -3,13 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pane Relay: your Mac, from anywhere</title>
-<meta name="description" content="Pane Relay is a small menu-bar app for your Mac. Pair once by scanning a code, then Pane reaches the Mac from any network. No Tailscale, no VPN, no router settings. $19 a year, 14-day free trial.">
+<title>Pane Relay: reach your Mac from anywhere, no port forwarding</title>
+<meta name="description" content="A Mac menu-bar app that lets Pane reach your Mac from any network and show one window at a time. No VPN, no router settings. $19 a year, 14-day free trial.">
+<link rel="canonical" href="https://pane.video/relay">
+<meta name="apple-itunes-app" content="app-id=6823900085">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pane">
+<meta property="og:url" content="https://pane.video/relay">
+<meta property="og:title" content="Pane Relay: your Mac, from anywhere">
+<meta property="og:description" content="A Mac menu-bar app that lets Pane reach your Mac from any network and show one window at a time. No VPN, no router settings. $19 a year, 14-day free trial.">
+<meta property="og:image" content="https://pane.video/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=89aa8bdd">
+<link rel="stylesheet" href="style.css?v=d257a8b8">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pane Relay","operatingSystem":"macOS 14 or later","applicationCategory":"UtilitiesApplication","url":"https://pane.video/relay","downloadUrl":"https://pane.video/download/PaneRelay.dmg","offers":{"@type":"Offer","price":"19.00","priceCurrency":"USD","url":"https://pane.video/relay#pricing"},"publisher":{"@type":"Organization","name":"Understudios","url":"https://pane.video/"}}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -35,8 +48,8 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="./"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
-    <nav><a href="relay.html" aria-current="page">Relay</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a class="cta" href="https://pane.video/download/PaneRelay.dmg">Download for Mac</a></nav>
+    <a class="brand" href="/"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
+    <nav><a href="/relay" aria-current="page">Relay</a><a href="/support">Support</a><a href="/privacy">Privacy</a><a class="cta" href="https://pane.video/download/PaneRelay.dmg">Download for Mac</a></nav>
   </div>
 </header>
 
@@ -44,13 +57,14 @@
   <section class="hero">
     <div class="hero-copy">
       <span class="pill"><i aria-hidden="true"></i>for Pane on iPhone and iPad</span>
-      <h1><span class="light">Pane Relay</span>Your Mac, from&nbsp;anywhere.</h1>
-      <p class="lede">A small app that lives in your Mac’s menu bar. Pair once by scanning a code, then Pane reaches the Mac from any network: cellular, hotel Wi-Fi, the office. No Tailscale, no VPN, no router settings.</p>
+      <h1><span class="light">Pane Relay</span> Your Mac, from&nbsp;anywhere.</h1>
+      <p class="lede">A small app that lives in your Mac’s menu bar. Pair once by scanning a code, then Pane reaches the Mac from any network: cellular, hotel Wi-Fi, the office. No Tailscale, no VPN, no router settings. On iPhone it also lets Pane show one window at a time.</p>
       <!-- DOWNLOAD: the notarized DMG lives in the pane-downloads R2 bucket, served by the site Worker (pane-agent/scripts/release.sh uploads it). -->
       <div class="actions">
         <a class="cta" href="https://pane.video/download/PaneRelay.dmg">Download for Mac</a>
         <a class="cta ghost" href="#pricing">$19 a year · 14-day free trial</a>
       </div>
+      <p class="tomac" hidden>Pane Relay installs on the Mac. Send this page there, or open <b>pane.video/get</b> in the Mac’s browser.</p>
       <ul class="trust"><li>Notarized by Apple</li><li>No account</li><li>Nothing stored</li><li>Cancel anytime</li></ul>
     </div>
     <div class="stage mac" aria-label="Pane Relay in the Mac menu bar, and a Pane session on iPhone">
@@ -64,47 +78,69 @@
           <svg viewBox="0 0 16 16"><use href="#cc"/></svg>
           <time>Tue 9:41</time>
         </div>
-        <img class="popover" src="img/popover.png" width="776" height="1330" fetchpriority="high" alt="">
+        <img class="popover" src="img/popover.webp" width="776" height="1330" fetchpriority="high" alt="">
       </div>
-      <div class="dev phone land p2"><div class="frame"><img src="img/session.png" width="1688" height="780" fetchpriority="high" alt="A Pane session on iPhone: Studio mini’s desktop with the modifier dock"></div></div>
+      <div class="dev phone land p2"><div class="frame"><img src="img/session.webp" width="1688" height="780" fetchpriority="high" alt="A Pane session on iPhone: Studio mini’s desktop with the modifier dock"></div></div>
     </div>
   </section>
 
   <section class="sec" aria-labelledby="get-h">
     <div class="head rv">
-      <h2 id="get-h"><span class="light">Made for the</span>Mac that stays home.</h2>
+      <h2 id="get-h"><span class="light">Made for the</span> Mac that stays home.</h2>
       <p class="lede">Both ends dial out to the relay, so there is nothing to open on the router and nothing to configure twice.</p>
     </div>
     <div class="grid">
       <article class="cell c-pair rv">
         <span class="tag">QR · 10 seconds</span>
-        <h3><span class="light">Pair with</span>a scan.</h3>
+        <h3><span class="light">Pair with</span> a scan.</h3>
         <p>Pane Relay shows a code in the menu bar. Point the iPhone camera at it and Pane opens, saves the Mac and pairs it. Every iPhone and iPad you own, no accounts.</p>
-        <div class="shot ui"><img src="img/ui-popover.png" width="680" height="1234" loading="lazy" alt="The Pane Relay popover: Online, a pairing QR code, Copy pairing code"></div>
+        <div class="shot ui"><img src="img/ui-popover.webp" width="680" height="1234" loading="lazy" alt="The Pane Relay popover: Online, a pairing QR code, Copy pairing code"></div>
       </article>
       <article class="cell dark c-route rv">
         <span class="tag">cellular · hotel Wi-Fi · CGNAT</span>
-        <h3><span class="light">Works where</span>VPNs are a hassle.</h3>
+        <h3><span class="light">Works where</span> VPNs are a hassle.</h3>
         <p>Both sides dial out, so it works behind any router, carrier-grade NAT included. Pane still tries the Mac directly first and uses the relay only when nothing answers.</p>
         <svg class="route-ill" viewBox="0 0 240 150" aria-hidden="true"><use href="#routeIll"/></svg>
       </article>
       <article class="cell quiet c-priv rv">
         <span class="tag">no account · nothing stored</span>
-        <h3><span class="light">Private</span>by design.</h3>
+        <h3><span class="light">Private</span> by design.</h3>
         <p>The relay forwards bytes between your device and your Mac and keeps none of them. It knows a Mac by a random id, not by you. Your Mac login stays in the Keychain, as always.</p>
         <div class="tags" aria-hidden="true"><span>TLS on both legs</span><span>random host id</span><span>no screen content stored</span><span>no keystrokes stored</span><span>unpair anytime</span></div>
       </article>
       <article class="cell c-off rv">
         <span class="tag">launch at login</span>
-        <h3><span class="light">Set up once,</span>forget it.</h3>
+        <h3><span class="light">Set up once,</span> forget it.</h3>
         <p>Pane Relay starts with your Mac, reconnects on its own and tells you when Screen Sharing is off. The menu bar shows what is paired and whether a session is live.</p>
-        <div class="shot ui"><img src="img/ui-popover-off.png" width="680" height="1422" loading="lazy" alt="The Pane Relay popover warning: Screen Sharing is off, with an Open System Settings button"></div>
+        <div class="shot ui"><img src="img/ui-popover-off.webp" width="680" height="1422" loading="lazy" alt="The Pane Relay popover warning: Screen Sharing is off, with an Open System Settings button"></div>
       </article>
     </div>
   </section>
 
+  <section class="sec" id="windows" aria-labelledby="win-h">
+    <div class="head rv">
+      <h2 id="win-h"><span class="light">On iPhone,</span> one window at a time.</h2>
+      <p class="lede">A whole desktop is a lot for a phone screen. Pane Relay tells Pane where each window is, so Pane can show only the one you are working in.</p>
+    </div>
+    <div class="grid">
+      <article class="cell c-win rv">
+        <span class="tag">Desktop | Window</span>
+        <h3><span class="light">Just the window</span> you’re in.</h3>
+        <p>Pick a window and Pane shows that one at its own size, with no desktop and no other apps around it. The whole screen is one tap away.</p>
+        <div class="shot"><div class="dev phone"><div class="frame"><img src="img/window.webp" width="780" height="1696" loading="lazy" alt="Pane on iPhone in Window view: a Notes window fills the screen, with Trackpad, Keyboard, Workspace and Tools below"></div></div></div>
+      </article>
+      <article class="cell c-win rv">
+        <span class="tag">Workspace</span>
+        <h3><span class="light">Every Space,</span> one list.</h3>
+        <p>Workspace lists what is open on each Space of your Mac, and a tap takes you there. Mission Control, App Exposé and the Spaces are buttons.</p>
+        <div class="shot"><div class="dev phone"><div class="frame"><img src="img/workspace.webp" width="780" height="1696" loading="lazy" alt="The Workspace sheet in Pane: windows grouped by Space, with Apps, Spaces and Displays tabs"></div></div></div>
+      </article>
+    </div>
+    <p class="note rv" style="margin-top:20px">Window view and Workspace are on iPhone, with Pane 1.2 or later. Pane Relay asks once for Accessibility and Screen Recording on the Mac so it can see where the windows are.</p>
+  </section>
+
   <section class="sec" id="how" aria-labelledby="how-h">
-    <h2 id="how-h" class="rv"><span class="light">How it works</span>Three steps, once.</h2>
+    <h2 id="how-h" class="rv"><span class="light">How it works</span> Three steps, once.</h2>
     <ol class="steps">
       <li class="cell step rv">
         <div class="ill" aria-hidden="true">
@@ -115,7 +151,7 @@
             <span class="batt"></span>
             <time>9:41</time>
           </div>
-          <img class="pair" src="img/ui-popover.png" width="680" height="1234" loading="lazy" alt="">
+          <img class="pair" src="img/ui-popover.webp" width="680" height="1234" loading="lazy" alt="">
         </div>
         <span class="tag">1 · on the Mac</span>
         <h3>Install Pane Relay</h3>
@@ -127,11 +163,11 @@
         </div>
         <span class="tag">2 · on the iPhone</span>
         <h3>Scan the code</h3>
-        <p>Point the camera at it. Pane opens, saves the Mac if it is new and pairs it. For a second device, scan again. Or copy the code and paste it under <strong>Relay</strong> on the Mac’s Edit screen in Pane.</p>
+        <p>Point the camera at it. Pane opens, saves the Mac if it is new and pairs it. For a second device, scan again. Or copy the code and paste it under <strong>Pane Relay</strong> on the Mac’s Edit screen in Pane.</p>
       </li>
       <li class="cell step rv">
         <div class="ill" aria-hidden="true">
-          <img class="conn" src="img/ui-connecting.png" width="700" height="600" loading="lazy" alt="">
+          <img class="conn" src="img/ui-connecting.webp" width="700" height="600" loading="lazy" alt="">
         </div>
         <span class="tag">3 · anywhere</span>
         <h3>Connect as usual</h3>
@@ -141,7 +177,7 @@
   </section>
 
   <section class="sec" id="pricing" aria-labelledby="price-h">
-    <h2 id="price-h" class="rv"><span class="light">Pricing</span>$19 a year, per Mac.</h2>
+    <h2 id="price-h" class="rv"><span class="light">Pricing</span> $19 a year, per Mac.</h2>
     <div class="price rv">
       <div>
         <div class="amount"><span class="cur">$</span>19<span class="per">/ year</span></div>
@@ -152,6 +188,7 @@
       <ul class="includes">
         <li>Unlimited iPhones and iPads per Mac</li>
         <li>Direct connection at home, relay everywhere else</li>
+        <li>Window view and Workspace on iPhone</li>
         <li>Starts at login, reconnects on its own</li>
         <li>Notarized by Apple, macOS 14 or later</li>
         <li>Cancel anytime, no questions</li>
@@ -162,7 +199,7 @@
   </section>
 
   <section class="sec" id="faq" aria-labelledby="faq-h">
-    <h2 id="faq-h" class="rv"><span class="light">Questions</span>The honest answers.</h2>
+    <h2 id="faq-h" class="rv"><span class="light">Questions</span> The honest answers.</h2>
     <div class="faq rv">
       <div>
         <h3>Is the connection encrypted?</h3>
@@ -170,11 +207,11 @@
       </div>
       <div>
         <h3>What does the relay see?</h3>
-        <p>IP addresses, timestamps and the amount of data, for as long as a session lasts. No screen content, keystrokes or passwords are stored, and there is no account that ties a Mac to a person. Details in the <a href="privacy.html#relay">privacy policy</a>.</p>
+        <p>IP addresses, timestamps and the amount of data, for as long as a session lasts. No screen content, keystrokes or passwords are stored, and there is no account that ties a Mac to a person. Details in the <a href="/privacy#relay">privacy policy</a>.</p>
       </div>
       <div>
         <h3>Can I unpair a device?</h3>
-        <p>Yes: in Pane Relay’s menu next to the device, or in Pane under Edit › Relay › Unpair. Pairing codes can be regenerated from the Mac at any time.</p>
+        <p>Yes: in Pane Relay’s menu next to the device, or in Pane under Edit › Pane Relay › Unpair. A removed device has to scan the code again before it can connect.</p>
       </div>
       <div>
         <h3>Do I need it at home?</h3>
@@ -192,7 +229,7 @@
   </section>
 
   <section class="final rv">
-    <h2><span class="light">Your Mac,</span>from anywhere.</h2>
+    <h2><span class="light">Your Mac,</span> from anywhere.</h2>
     <p>Install on the Mac, scan with the iPhone, done. The first 14 days are free, no card needed.</p>
     <a class="cta light" href="https://pane.video/download/PaneRelay.dmg">Download for Mac</a>
     <a class="cta outline" href="https://buy.polar.sh/polar_cl_nQ93S4Zbl8Rg0mgrWq858HbG57jsIanz7mjUv2LLp9F">Buy · $19 a year</a>
@@ -202,11 +239,12 @@
 
 <footer class="foot">
   <div class="wrap">
-    <a class="brand" href="./"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
-    <nav><a href="./">Pane for iPhone and iPad</a><a href="support.html">Support</a><a href="privacy.html">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
+    <a class="brand" href="/"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
+    <nav><a href="/">Pane for iPhone and iPad</a><a href="/support">Support</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
     <p>© 2026 Understudios. Mac, macOS, iPhone, iPad, Face ID and Touch ID are trademarks of Apple Inc.</p>
   </div>
 </footer>
 <script>(()=>{const h=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;h.classList.add('js');requestAnimationFrame(()=>requestAnimationFrame(()=>h.classList.add('loaded')));const els=[...document.querySelectorAll('.rv')];const show=e=>e.classList.add('in');if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){show(e.target);io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});els.forEach(e=>io.observe(e))}else els.forEach(show);setTimeout(()=>els.forEach(show),1500);document.addEventListener('visibilitychange',()=>{if(!document.hidden){h.classList.add('loaded');els.forEach(show)}})})();</script>
+<script>(()=>{const ua=navigator.userAgent;if(!(/iPhone|iPod|iPad|Android/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1)))return;const url='https://pane.video/get?s=share';const tip=document.querySelector('.tomac');if(tip)tip.hidden=false;document.querySelectorAll('a[href$="PaneRelay.dmg"]').forEach(a=>{a.textContent='Send to my Mac';a.href='/get?s=phone';a.addEventListener('click',async e=>{e.preventDefault();try{if(navigator.share)await navigator.share({title:'Pane Relay for Mac',url});else{await navigator.clipboard.writeText(url);a.textContent='Link copied'}}catch(_){}})})})();</script>
 </body>
 </html>

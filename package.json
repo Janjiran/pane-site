@@ -2,7 +2,7 @@
   "name": "pane-site",
   "private": true,
   "scripts": {
-    "dev": "wrangler dev",
+    "dev": "wrangler dev --var DEV:1",
     "deploy": "scripts/deploy.sh"
   },
   "devDependencies": {

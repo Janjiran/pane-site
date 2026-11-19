@@ -3,26 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Support — Pane</title>
-<meta name="description" content="How to set up your Mac for Pane, connect over Tailscale, and fix common errors.">
+<title>Pane support: Mac Screen Sharing setup, Tailscale, errors</title>
+<meta name="description" content="Turn on Screen Sharing, connect from iPhone or iPad at home or over Tailscale, and fix connection, sign-in and black screen errors in Pane.">
+<link rel="canonical" href="https://pane.video/support">
+<meta name="apple-itunes-app" content="app-id=6823900085">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pane">
+<meta property="og:url" content="https://pane.video/support">
+<meta property="og:title" content="Pane support: setup, Tailscale and errors">
+<meta property="og:description" content="Turn on Screen Sharing, connect from iPhone or iPad at home or over Tailscale, and fix connection, sign-in and black screen errors in Pane.">
+<meta property="og:image" content="https://pane.video/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=89aa8bdd">
+<link rel="stylesheet" href="style.css?v=d257a8b8">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="./"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
-    <nav><a href="relay.html">Relay</a><a href="support.html" aria-current="page">Support</a><a href="privacy.html">Privacy</a><a class="cta" href="https://apps.apple.com/app/id6823900085">App Store</a></nav>
+    <a class="brand" href="/"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
+    <nav><a href="/relay">Relay</a><a href="/support" aria-current="page">Support</a><a href="/privacy">Privacy</a><a class="cta" href="https://apps.apple.com/app/id6823900085">App Store</a></nav>
   </div>
 </header>
 
 <main class="wrap">
   <article class="doc">
     <h1>Support</h1>
-    <p class="meta">Pane: Remote Desktop for Mac · <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></p>
+    <p class="meta">Pane: VNC Remote Desktop · <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></p>
 
     <h2>1. Turn on Screen Sharing on your Mac</h2>
     <figure class="sys-fig" style="margin:0">
@@ -70,7 +82,7 @@
     <p>So that Pane can wake a sleeping Mac, enable <strong>Wake for network access</strong> in System Settings › <strong>Battery</strong> › <strong>Options</strong> (laptops) or <strong>Energy</strong> (desktops), and keep the Mac on Ethernet or the same Wi-Fi network. Then, in Pane, open the Mac’s details, tap <strong>Edit</strong> and enter its hardware address under <strong>Wake-on-LAN</strong> (on the Mac: System Settings › Network › Wi-Fi or Ethernet › <strong>Details</strong> › <strong>Hardware</strong>). An asleep Mac then shows a <strong>Wake</strong> button on the home screen, and the connecting screen offers <strong>Wake &amp; retry</strong>. Waking works on the local network only.</p>
 
     <h2 id="tailscale">2. Connect from anywhere</h2>
-    <p id="relay">The simplest way is <a href="relay.html"><strong>Pane Relay</strong></a>, a small app for the Mac: install it, scan its code with the iPhone camera, done. It is paid after a 14-day trial. If you already use Tailscale, Pane works with it for free:</p>
+    <p id="relay">The simplest way is <a href="/relay"><strong>Pane Relay</strong></a>, a small app for the Mac: install it, scan its code with the iPhone camera, done. It is paid after a 14-day trial. If you already use Tailscale, Pane works with it for free:</p>
     <p>Tailscale gives each of your devices a private, stable address that works from any network, with no port forwarding.</p>
     <ol>
       <li>Install Tailscale on the Mac (<a href="https://tailscale.com/download/mac">tailscale.com/download</a>) and on your iPhone or iPad (App Store), and sign in to the same account on both.</li>
@@ -123,7 +135,7 @@
     <p>Pane talks VNC directly to your Mac. Your login is encrypted; the screen, keystrokes and clipboard are not, so use it on your own Wi-Fi or over Tailscale or a VPN when away. Section 2 above explains how to set Tailscale up; it encrypts the whole connection end to end.</p>
 
     <h3 id="analytics">Can I turn off analytics?</h3>
-    <p>Yes. You can turn usage analytics off in the app under <strong>About</strong> (Home › sliders button). Events already sent are not affected; nothing is sent after the switch is off. What is collected is listed in the <a href="privacy.html#analytics">privacy policy</a>.</p>
+    <p>Yes. You can turn usage analytics off in the app under <strong>About</strong> (Home › sliders button). Events already sent are not affected; nothing is sent after the switch is off. What is collected is listed in the <a href="/privacy#analytics">privacy policy</a>.</p>
 
     <h2>6. Still stuck?</h2>
     <p>Email <a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a> with your iPhone or iPad model, iOS version, macOS version and the exact error text. We read everything and usually answer within a few days.</p>
@@ -132,8 +144,8 @@
 
 <footer class="foot">
   <div class="wrap">
-    <a class="brand" href="./"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
-    <nav><a href="./">Pane for iPhone and iPad</a><a href="relay.html">Pane Relay</a><a href="support.html">Support</a><a href="privacy.html">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
+    <a class="brand" href="/"><img src="img/mark.png" width="26" height="26" alt="">Pane</a>
+    <nav><a href="/">Pane for iPhone and iPad</a><a href="/relay">Pane Relay</a><a href="/support">Support</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
     <p>© 2026 Understudios. Mac, macOS, iPhone, iPad, Face ID and Touch ID are trademarks of Apple Inc.</p>
   </div>
 </footer>

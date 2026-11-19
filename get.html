@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Pane Relay for Mac</title>
+<meta name="description" content="Download Pane Relay for Mac and pair it with Pane on your iPhone or iPad.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/style.css?v=d257a8b8">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/img/mark.png" width="26" height="26" alt="">Pane</a>
+    <nav><a href="/relay">Relay</a><a href="/support">Support</a><a href="/privacy">Privacy</a><a class="cta" href="https://apps.apple.com/app/id6823900085">App Store</a></nav>
+  </div>
+</header>
+
+
+<main class="wrap">
+  <article class="doc">
+    <div id="on-mac">
+      <h1>Pane Relay is downloading.</h1>
+      <p class="meta">Nothing happened? <a href="/download/PaneRelay.dmg">Download Pane Relay for Mac</a> (macOS 14 or later).</p>
+      <h2>Three steps on this Mac</h2>
+      <ol>
+        <li>Open <strong>PaneRelay.dmg</strong> in Downloads and drag Pane Relay to Applications.</li>
+        <li>Open Pane Relay. It lives in the menu bar and shows a pairing code.</li>
+        <li>Point the iPhone camera at the code. Pane opens and pairs the Mac.</li>
+      </ol>
+      <h3>Controlling this Mac from Pane right now?</h3>
+      <p>The code is on the screen you are holding, so the camera cannot see it. Click <strong>Copy pairing code</strong> in Pane Relay instead. Then leave the session in Pane, open this Mac’s details and tap <strong>Paste code</strong>. Universal Clipboard carries the code to the iPhone when Handoff is on.</p>
+      <p class="note">The first 14 days are free and need no card. After that Pane Relay is $19 a year per Mac. <a href="/relay">What Pane Relay does</a></p>
+    </div>
+    <div id="on-phone" hidden>
+      <h1>Pane Relay installs on your Mac.</h1>
+      <p class="meta">Open this page there and the download starts.</p>
+      <p><a class="cta" id="send" href="https://pane.video/get">Send to my Mac</a></p>
+      <p>Or type <strong>pane.video/get</strong> into the Mac’s browser.</p>
+      <p class="note"><a href="/relay">What Pane Relay does</a></p>
+    </div>
+  </article>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/img/mark.png" width="26" height="26" alt="">Pane</a>
+    <nav><a href="/">Pane for iPhone and iPad</a><a href="/relay">Pane Relay</a><a href="/support">Support</a><a href="/privacy">Privacy policy</a><a href="mailto:jan.jiran@understudios.org">jan.jiran@understudios.org</a></nav>
+    <p>© 2026 Understudios. Mac, macOS, iPhone, iPad, Face ID and Touch ID are trademarks of Apple Inc.</p>
+  </div>
+</footer>
+<script>(()=>{const ua=navigator.userAgent;const phone=/iPhone|iPod|iPad|Android/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);if(!phone){setTimeout(()=>{location.href='/download/PaneRelay.dmg'},600);return}document.getElementById('on-mac').hidden=true;document.getElementById('on-phone').hidden=false;const a=document.getElementById('send');const url='https://pane.video/get?s=share';a.addEventListener('click',async e=>{e.preventDefault();try{if(navigator.share)await navigator.share({title:'Pane Relay for Mac',url});else{await navigator.clipboard.writeText(url);a.textContent='Link copied'}}catch(_){}})})();</script>
+</body>
+</html>
